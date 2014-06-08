@@ -15,5 +15,6 @@
 @property (strong, nonatomic) IBOutlet UITableView *signalTableView;
 @property (strong, nonatomic) IBOutlet UIButton *setSignalButton;
 @property (strong, nonatomic) IBOutlet UIButton *addSignalButton;
+@property (strong, nonatomic) IBOutlet UITextField *signalText;
 
 @end

@@ -46,9 +46,14 @@
    return cell;
 }
 
+- (IBAction)clearTapped:(id)sender
+{
+   command = [[MercurySetRealTimeSignalsCommand alloc] init];
+}
+
 - (IBAction)addSignalTapped:(id)sender
 {
-   [command addSignal:9];
+   [command addSignal:[self.signalText.text intValue]];
 }
 
 - (IBAction)setSignalListTapped:(id)sender
@@ -99,6 +104,8 @@
 -(void)response:(NSData *)message withSequenceNumber:(uint)sequenceNumber subcommand:(uint)subcommand status:(uint)status
 {
    NSLog(@"response:%d %d %d", sequenceNumber, subcommand, status);
+ 
+   //get response
    if(subcommand == 0x00000008)
    {
       [signalsList removeAllObjects];
@@ -109,6 +116,12 @@
          uint signal = [_instrument uintAtOffset:i*4 inData:message];
          [signalsList addObject:[NSNumber numberWithInt:signal]];
       }
+   }
+   
+   //set response, do get
+   if(subcommand == 0x0001000A)
+   {
+      [_instrument sendCommand:[[MercuryGetRealTimeSignalsCommand alloc]init]];      
    }
 }
 

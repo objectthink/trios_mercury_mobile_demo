@@ -134,6 +134,16 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mbd-0M-PiZ">
+                                <rect key="frame" x="20" y="187" width="37" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Clear">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="clearTapped:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="YH9-a6-QUq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -147,6 +157,7 @@
                         <outlet property="addSignalButton" destination="Ekq-xV-7D8" id="Ufr-kz-J1L"/>
                         <outlet property="setSignalButton" destination="hvz-em-jLf" id="oRf-Si-1qU"/>
                         <outlet property="signalTableView" destination="3pV-Hy-HZo" id="B9O-wq-9lX"/>
+                        <outlet property="signalText" destination="HX0-Av-SJ2" id="0MU-nK-O2X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>

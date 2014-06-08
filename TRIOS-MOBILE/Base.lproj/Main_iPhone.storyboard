@@ -183,10 +183,10 @@
             </objects>
             <point key="canvasLocation" x="228" y="154"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="Vex-rW-GRa">
             <objects>
-                <tabBarController id="8YX-ce-x5E" sceneMemberID="viewController">
+                <tabBarController id="8YX-ce-x5E" customClass="TabBarViewController" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="ToE-gV-eub"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="JQR-rB-NYL">
