@@ -1,20 +1,15 @@
 //
-//  FirstViewController.h
+//  IPhoneFEPCriticalStatusViewController.h
 //  TRIOS-MOBILE
 //
-//  Created by stephen eshelman on 6/4/14.
+//  Created by stephen eshelman on 6/8/14.
 //  Copyright (c) 2014 objectthink.com. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "MercuryInstrument.h"
 
-@interface MercuryFEPCriticalStatus : MercuryStatus
-@property (strong, nonatomic) NSArray* names;
-@property (strong, nonatomic) NSMutableArray* values;
-@end
-
-@interface FirstViewController : UIViewController <
+@interface IPhoneFEPCriticalStatusViewController : UIViewController <
 MercuryInstrumentDelegate,
 UITableViewDataSource,
 UITableViewDelegate
@@ -23,3 +18,4 @@ UITableViewDelegate
 @property (strong, nonatomic) IBOutlet UITableView *FETStatusTableView;
 
 @end
+

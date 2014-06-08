@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		012118A4193FE44F00CCA161 /* MercuryInstrument.m in Sources */ = {isa = PBXBuildFile; fileRef = 012118A3193FE44F00CCA161 /* MercuryInstrument.m */; };
+		012118A7193FF67C00CCA161 /* logo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 012118A6193FF67C00CCA161 /* logo.gif */; };
+		012118A91942880000CCA161 /* thumbnails-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 012118A81942880000CCA161 /* thumbnails-2.png */; };
+		012118AB1942890A00CCA161 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 012118AA1942890A00CCA161 /* play.png */; };
 		018484D9193F284A00D5820B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018484D8193F284A00D5820B /* Foundation.framework */; };
 		018484DB193F284A00D5820B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018484DA193F284A00D5820B /* CoreGraphics.framework */; };
 		018484DD193F284A00D5820B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018484DC193F284A00D5820B /* UIKit.framework */; };
@@ -23,6 +27,12 @@
 		01848500193F284A00D5820B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018484DC193F284A00D5820B /* UIKit.framework */; };
 		01848508193F284A00D5820B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 01848506193F284A00D5820B /* InfoPlist.strings */; };
 		0184850A193F284A00D5820B /* TRIOS_MOBILETests.m in Sources */ = {isa = PBXBuildFile; fileRef = 01848509193F284A00D5820B /* TRIOS_MOBILETests.m */; };
+		01848515193F2A4500D5820B /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01848514193F2A4500D5820B /* MainViewController.m */; };
+		733AC7BE19449FA500E5546C /* IPhoneMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 733AC7BD19449FA500E5546C /* IPhoneMainViewController.m */; };
+		733AC7C11944B56C00E5546C /* IPhoneFEPCriticalStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 733AC7C01944B56C00E5546C /* IPhoneFEPCriticalStatusViewController.m */; };
+		73E868ED1942B83D004A7C62 /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73E868EC1942B83D004A7C62 /* TabBarViewController.m */; };
+		73E868F019432F3C004A7C62 /* RealTimeSignalsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73E868EF19432F3C004A7C62 /* RealTimeSignalsViewController.m */; };
+		D612AD408778477CB388787D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F96985E5B4BE46578BA68F4C /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +46,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		012118A2193FE44F00CCA161 /* MercuryInstrument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MercuryInstrument.h; path = ../MercuryInstrument.h; sourceTree = "<group>"; };
+		012118A3193FE44F00CCA161 /* MercuryInstrument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MercuryInstrument.m; path = ../MercuryInstrument.m; sourceTree = "<group>"; };
+		012118A6193FF67C00CCA161 /* logo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = logo.gif; sourceTree = "<group>"; };
+		012118A81942880000CCA161 /* thumbnails-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbnails-2.png"; sourceTree = "<group>"; };
+		012118AA1942890A00CCA161 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		018484D5193F284A00D5820B /* TRIOS-MOBILE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TRIOS-MOBILE.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		018484D8193F284A00D5820B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		018484DA193F284A00D5820B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -58,6 +73,18 @@
 		01848505193F284A00D5820B /* TRIOS-MOBILETests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TRIOS-MOBILETests-Info.plist"; sourceTree = "<group>"; };
 		01848507193F284A00D5820B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		01848509193F284A00D5820B /* TRIOS_MOBILETests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRIOS_MOBILETests.m; sourceTree = "<group>"; };
+		01848513193F2A4500D5820B /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		01848514193F2A4500D5820B /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		1502EDB792854FBC99680EFA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		733AC7BC19449FA500E5546C /* IPhoneMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPhoneMainViewController.h; sourceTree = "<group>"; };
+		733AC7BD19449FA500E5546C /* IPhoneMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPhoneMainViewController.m; sourceTree = "<group>"; };
+		733AC7BF1944B56C00E5546C /* IPhoneFEPCriticalStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPhoneFEPCriticalStatusViewController.h; sourceTree = "<group>"; };
+		733AC7C01944B56C00E5546C /* IPhoneFEPCriticalStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPhoneFEPCriticalStatusViewController.m; sourceTree = "<group>"; };
+		73E868EB1942B83D004A7C62 /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
+		73E868EC1942B83D004A7C62 /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
+		73E868EE19432F3C004A7C62 /* RealTimeSignalsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RealTimeSignalsViewController.h; sourceTree = "<group>"; };
+		73E868EF19432F3C004A7C62 /* RealTimeSignalsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RealTimeSignalsViewController.m; sourceTree = "<group>"; };
+		F96985E5B4BE46578BA68F4C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +95,7 @@
 				018484DB193F284A00D5820B /* CoreGraphics.framework in Frameworks */,
 				018484DD193F284A00D5820B /* UIKit.framework in Frameworks */,
 				018484D9193F284A00D5820B /* Foundation.framework in Frameworks */,
+				D612AD408778477CB388787D /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +112,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		012118A5193FF66400CCA161 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				012118AA1942890A00CCA161 /* play.png */,
+				012118A81942880000CCA161 /* thumbnails-2.png */,
+				012118A6193FF67C00CCA161 /* logo.gif */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		018484CC193F284A00D5820B = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +129,7 @@
 				01848503193F284A00D5820B /* TRIOS-MOBILETests */,
 				018484D7193F284A00D5820B /* Frameworks */,
 				018484D6193F284A00D5820B /* Products */,
+				1502EDB792854FBC99680EFA /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,6 +149,7 @@
 				018484DA193F284A00D5820B /* CoreGraphics.framework */,
 				018484DC193F284A00D5820B /* UIKit.framework */,
 				018484FD193F284A00D5820B /* XCTest.framework */,
+				F96985E5B4BE46578BA68F4C /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -117,10 +157,23 @@
 		018484DE193F284A00D5820B /* TRIOS-MOBILE */ = {
 			isa = PBXGroup;
 			children = (
+				012118A5193FF66400CCA161 /* Resources */,
+				012118A2193FE44F00CCA161 /* MercuryInstrument.h */,
+				012118A3193FE44F00CCA161 /* MercuryInstrument.m */,
+				73E868EB1942B83D004A7C62 /* TabBarViewController.h */,
+				73E868EC1942B83D004A7C62 /* TabBarViewController.m */,
 				018484E7193F284A00D5820B /* AppDelegate.h */,
 				018484E8193F284A00D5820B /* AppDelegate.m */,
+				733AC7BC19449FA500E5546C /* IPhoneMainViewController.h */,
+				733AC7BD19449FA500E5546C /* IPhoneMainViewController.m */,
 				018484EA193F284A00D5820B /* Main_iPhone.storyboard */,
+				733AC7BF1944B56C00E5546C /* IPhoneFEPCriticalStatusViewController.h */,
+				733AC7C01944B56C00E5546C /* IPhoneFEPCriticalStatusViewController.m */,
 				018484ED193F284A00D5820B /* Main_iPad.storyboard */,
+				73E868EE19432F3C004A7C62 /* RealTimeSignalsViewController.h */,
+				73E868EF19432F3C004A7C62 /* RealTimeSignalsViewController.m */,
+				01848513193F2A4500D5820B /* MainViewController.h */,
+				01848514193F2A4500D5820B /* MainViewController.m */,
 				018484F0193F284A00D5820B /* FirstViewController.h */,
 				018484F1193F284A00D5820B /* FirstViewController.m */,
 				018484F3193F284A00D5820B /* SecondViewController.h */,
@@ -167,9 +220,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0184850D193F284A00D5820B /* Build configuration list for PBXNativeTarget "TRIOS-MOBILE" */;
 			buildPhases = (
+				4379C098A7C94352A0FAF527 /* Check Pods Manifest.lock */,
 				018484D1193F284A00D5820B /* Sources */,
 				018484D2193F284A00D5820B /* Frameworks */,
 				018484D3193F284A00D5820B /* Resources */,
+				B38EF918F1904BB9ABD50B1C /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -236,10 +291,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				012118AB1942890A00CCA161 /* play.png in Resources */,
 				018484EF193F284A00D5820B /* Main_iPad.storyboard in Resources */,
 				018484F7193F284A00D5820B /* Images.xcassets in Resources */,
+				012118A7193FF67C00CCA161 /* logo.gif in Resources */,
 				018484EC193F284A00D5820B /* Main_iPhone.storyboard in Resources */,
 				018484E3193F284A00D5820B /* InfoPlist.strings in Resources */,
+				012118A91942880000CCA161 /* thumbnails-2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +311,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4379C098A7C94352A0FAF527 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B38EF918F1904BB9ABD50B1C /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		018484D1193F284A00D5820B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -260,7 +351,13 @@
 			files = (
 				018484F5193F284A00D5820B /* SecondViewController.m in Sources */,
 				018484E9193F284A00D5820B /* AppDelegate.m in Sources */,
+				73E868ED1942B83D004A7C62 /* TabBarViewController.m in Sources */,
+				012118A4193FE44F00CCA161 /* MercuryInstrument.m in Sources */,
+				733AC7C11944B56C00E5546C /* IPhoneFEPCriticalStatusViewController.m in Sources */,
 				018484F2193F284A00D5820B /* FirstViewController.m in Sources */,
+				733AC7BE19449FA500E5546C /* IPhoneMainViewController.m in Sources */,
+				73E868F019432F3C004A7C62 /* RealTimeSignalsViewController.m in Sources */,
+				01848515193F2A4500D5820B /* MainViewController.m in Sources */,
 				018484E5193F284A00D5820B /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -393,6 +490,7 @@
 		};
 		0184850E193F284A00D5820B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1502EDB792854FBC99680EFA /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -406,6 +504,7 @@
 		};
 		0184850F193F284A00D5820B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1502EDB792854FBC99680EFA /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -476,6 +575,7 @@
 				0184850F193F284A00D5820B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		01848510193F284A00D5820B /* Build configuration list for PBXNativeTarget "TRIOS-MOBILETests" */ = {
 			isa = XCConfigurationList;
@@ -484,6 +584,7 @@
 				01848512193F284A00D5820B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
