@@ -108,4 +108,6 @@ typedef enum MercuryAccessType
 -(float)floatAtOffset:(NSUInteger)offset inData:(NSData*)data;
 -(uint)uintAtOffset:(NSUInteger)offset inData:(NSData*)data;
 
+-(void)addDelegate:(id<MercuryInstrumentDelegate>) delegate;
+
 @end

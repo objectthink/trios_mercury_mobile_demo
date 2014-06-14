@@ -1,0 +1,114 @@
+//
+//  ProcedureViewController.m
+//  TRIOS-MOBILE
+//
+//  Created by stephen eshelman on 6/14/14.
+//  Copyright (c) 2014 objectthink.com. All rights reserved.
+//
+
+#import "ProcedureViewController.h"
+#import "AppDelegate.h"
+#import "MercuryFile.h"
+
+@interface ProcedureViewController ()
+{
+   MercuryInstrument* _instrument;
+}
+@end
+
+@implementation ProcedureViewController
+
+- (IBAction)testTapped:(id)sender
+{
+   MercuryReadFileCommand* command =
+   [[MercuryReadFileCommand alloc]
+    initWithFilename:@"Procedure.dat" offset:0 moveMethod:0 dataLengthRequested:100];
+   
+   [_instrument sendCommand:command];
+}
+
+-(void)connected
+{
+}
+
+-(void)accept:(MercuryAccess)access
+{
+}
+
+-(void)stat:(NSData*)message withSubcommand:(uint)subcommand
+{
+}
+
+-(void)     response:(NSData *)message
+  withSequenceNumber:(uint)sequenceNumber
+          subcommand:(uint)subcommand
+              status:(uint)status
+{
+   if(subcommand == 0x00000007)
+   {
+      if(status==0)
+      {
+         //float length = [_instrument uintAtOffset:0 inData:message];
+      }
+      else
+      {
+         
+      }
+   }
+
+}
+
+-(void)ackWithSequenceNumber:(uint)sequencenumber
+{
+}
+
+-(void)nakWithSequenceNumber:(uint)sequencenumber andError:(uint)errorcode
+{
+}
+
+-(void)error:(NSError *)error
+{
+}
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+   if (self) {
+      // Custom initialization
+   }
+   return self;
+}
+
+- (void)viewDidLoad
+{
+   [super viewDidLoad];
+   
+   AppDelegate* app = [[UIApplication sharedApplication] delegate];
+   
+   _instrument = [app instrument];
+   
+   //_instrument.instrumentDelegate = self;
+   
+   [_instrument addDelegate:self];
+   
+   self.title = @"Procedure";
+}
+
+- (void)didReceiveMemoryWarning
+{
+   [super didReceiveMemoryWarning];
+   // Dispose of any resources that can be recreated.
+}
+
+/*
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
+
+@end

@@ -135,7 +135,6 @@ union intToFloat
    return self;
 }
 
-//TODO:add signal for testing
 -(NSMutableData*)getBytes
 {
    [self.bytes setLength:0];
@@ -148,7 +147,13 @@ union intToFloat
 
 @implementation MercuryInstrument
 {
+   NSMutableArray* delegates;
    uint _sequenceNumber;
+}
+
+-(void)addDelegate:(id<MercuryInstrumentDelegate>)delegate
+{
+   [delegates addObject:delegate];
 }
 
 -(float)floatAtOffset:(NSUInteger)offset
@@ -190,6 +195,8 @@ union intToFloat
 
 -(BOOL)connectToHost:(NSString*)host andPort:(uint16_t)port
 {
+   delegates = [[NSMutableArray alloc]init];
+   
    self.host = [NSString stringWithFormat:@"%@",host];
 
    _sequenceNumber = 0;
@@ -211,6 +218,11 @@ union intToFloat
       {
          if([self.instrumentDelegate respondsToSelector:@selector(error:)])
             [self.instrumentDelegate error:error];
+         
+         for (id<MercuryInstrumentDelegate> delegate in delegates)
+         {
+            [delegate error:error];
+         }
       }
 
       return NO;
@@ -256,7 +268,7 @@ union intToFloat
    
    NSData*   e = [NSData dataWithBytes:&LoginMessage length:152];
    
-   [socket writeData:e withTimeout:-1 tag:0];
+   [socket writeData:e withTimeout:(NSTimeInterval)30 tag:0];
    [socket readDataToData:[NSData dataWithBytes:"END " length:4] withTimeout:-1 tag:0];
    
    return r;
@@ -307,6 +319,11 @@ union intToFloat
    
    if(self.instrumentDelegate != nil)
       [self.instrumentDelegate connected];
+   
+   for (id<MercuryInstrumentDelegate> delegate in delegates)
+   {
+      [delegate connected];
+   }
 }
 
 - (void)socketDidSecure:(GCDAsyncSocket *)sock
@@ -355,13 +372,32 @@ union intToFloat
       {
          self.access = (MercuryAccess)[self uintAtOffset:12 inData:data];
          [self.instrumentDelegate accept:self.access];
+         
+         for (id<MercuryInstrumentDelegate> delegate in delegates)
+         {
+            [delegate accept:self.access];
+         }
       }
       
       if ([typeAsString isEqualToString:@"STAT"])
+      {
          [self.instrumentDelegate stat:message withSubcommand:subcommand];
+         
+         for (id<MercuryInstrumentDelegate> d in delegates)
+         {
+            [d stat:message withSubcommand:subcommand];
+         }
+      }
       
       if([typeAsString isEqualToString:@"ACK "])
+      {
          [self.instrumentDelegate ackWithSequenceNumber:[self uintAtOffset:12 inData:data]];
+         
+         for (id<MercuryInstrumentDelegate> delegate in delegates)
+         {
+            [delegate ackWithSequenceNumber:[self uintAtOffset:12 inData:data]];
+         }
+      }
       
       if ([typeAsString isEqualToString:@"NAK "])
       {
@@ -369,6 +405,11 @@ union intToFloat
          uint errorCode = [self uintAtOffset:16 inData:data];
          
          [self.instrumentDelegate nakWithSequenceNumber:sequenceNumer andError:errorCode];
+
+         for (id<MercuryInstrumentDelegate> delegate in delegates)
+         {
+            [delegate nakWithSequenceNumber:sequenceNumer andError:errorCode];
+         }
       }
       
       if([typeAsString isEqualToString:@"RSP "])
@@ -389,8 +430,16 @@ union intToFloat
           withSequenceNumber:sequenceNumber
           subcommand:subcommand
           status:status];
-      }
          
+         for (id<MercuryInstrumentDelegate> delegate in delegates)
+         {
+            [delegate           response:message
+                      withSequenceNumber:sequenceNumber
+                              subcommand:subcommand
+                                  status:status];
+         }
+
+      }
    }
    //////////////////////////////
    

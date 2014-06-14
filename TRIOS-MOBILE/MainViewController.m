@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "MainViewController.h"
 #import "MercuryInstrument.h"
+#import "MercuryFile.h"
 
 @interface MainViewController ()
 {

@@ -11,6 +11,8 @@
 		012118A7193FF67C00CCA161 /* logo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 012118A6193FF67C00CCA161 /* logo.gif */; };
 		012118A91942880000CCA161 /* thumbnails-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 012118A81942880000CCA161 /* thumbnails-2.png */; };
 		012118AB1942890A00CCA161 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 012118AA1942890A00CCA161 /* play.png */; };
+		01512C0D194BBC6C00F69E82 /* MercuryFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 01512C0C194BBC6C00F69E82 /* MercuryFile.m */; };
+		01512C10194C77E500F69E82 /* ProcedureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01512C0F194C77E500F69E82 /* ProcedureViewController.m */; };
 		018484D9193F284A00D5820B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018484D8193F284A00D5820B /* Foundation.framework */; };
 		018484DB193F284A00D5820B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018484DA193F284A00D5820B /* CoreGraphics.framework */; };
 		018484DD193F284A00D5820B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018484DC193F284A00D5820B /* UIKit.framework */; };
@@ -30,6 +32,7 @@
 		01848515193F2A4500D5820B /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01848514193F2A4500D5820B /* MainViewController.m */; };
 		733AC7BE19449FA500E5546C /* IPhoneMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 733AC7BD19449FA500E5546C /* IPhoneMainViewController.m */; };
 		733AC7C11944B56C00E5546C /* IPhoneFEPCriticalStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 733AC7C01944B56C00E5546C /* IPhoneFEPCriticalStatusViewController.m */; };
+		73AC8599194D133E00141413 /* MercuryProcedureStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 73AC8598194D133E00141413 /* MercuryProcedureStatus.m */; };
 		73E868ED1942B83D004A7C62 /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73E868EC1942B83D004A7C62 /* TabBarViewController.m */; };
 		73E868F019432F3C004A7C62 /* RealTimeSignalsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73E868EF19432F3C004A7C62 /* RealTimeSignalsViewController.m */; };
 		D612AD408778477CB388787D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F96985E5B4BE46578BA68F4C /* libPods.a */; };
@@ -51,6 +54,10 @@
 		012118A6193FF67C00CCA161 /* logo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = logo.gif; sourceTree = "<group>"; };
 		012118A81942880000CCA161 /* thumbnails-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thumbnails-2.png"; sourceTree = "<group>"; };
 		012118AA1942890A00CCA161 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
+		01512C0B194BBC6C00F69E82 /* MercuryFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MercuryFile.h; sourceTree = "<group>"; };
+		01512C0C194BBC6C00F69E82 /* MercuryFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MercuryFile.m; sourceTree = "<group>"; };
+		01512C0E194C77E500F69E82 /* ProcedureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcedureViewController.h; sourceTree = "<group>"; };
+		01512C0F194C77E500F69E82 /* ProcedureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureViewController.m; sourceTree = "<group>"; };
 		018484D5193F284A00D5820B /* TRIOS-MOBILE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TRIOS-MOBILE.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		018484D8193F284A00D5820B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		018484DA193F284A00D5820B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -80,6 +87,8 @@
 		733AC7BD19449FA500E5546C /* IPhoneMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPhoneMainViewController.m; sourceTree = "<group>"; };
 		733AC7BF1944B56C00E5546C /* IPhoneFEPCriticalStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPhoneFEPCriticalStatusViewController.h; sourceTree = "<group>"; };
 		733AC7C01944B56C00E5546C /* IPhoneFEPCriticalStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPhoneFEPCriticalStatusViewController.m; sourceTree = "<group>"; };
+		73AC8597194D133E00141413 /* MercuryProcedureStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MercuryProcedureStatus.h; sourceTree = "<group>"; };
+		73AC8598194D133E00141413 /* MercuryProcedureStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MercuryProcedureStatus.m; sourceTree = "<group>"; };
 		73E868EB1942B83D004A7C62 /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
 		73E868EC1942B83D004A7C62 /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
 		73E868EE19432F3C004A7C62 /* RealTimeSignalsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RealTimeSignalsViewController.h; sourceTree = "<group>"; };
@@ -160,6 +169,10 @@
 				012118A5193FF66400CCA161 /* Resources */,
 				012118A2193FE44F00CCA161 /* MercuryInstrument.h */,
 				012118A3193FE44F00CCA161 /* MercuryInstrument.m */,
+				73AC8597194D133E00141413 /* MercuryProcedureStatus.h */,
+				73AC8598194D133E00141413 /* MercuryProcedureStatus.m */,
+				01512C0B194BBC6C00F69E82 /* MercuryFile.h */,
+				01512C0C194BBC6C00F69E82 /* MercuryFile.m */,
 				73E868EB1942B83D004A7C62 /* TabBarViewController.h */,
 				73E868EC1942B83D004A7C62 /* TabBarViewController.m */,
 				018484E7193F284A00D5820B /* AppDelegate.h */,
@@ -170,6 +183,8 @@
 				733AC7C01944B56C00E5546C /* IPhoneFEPCriticalStatusViewController.m */,
 				018484EA193F284A00D5820B /* Main_iPhone.storyboard */,
 				018484ED193F284A00D5820B /* Main_iPad.storyboard */,
+				01512C0E194C77E500F69E82 /* ProcedureViewController.h */,
+				01512C0F194C77E500F69E82 /* ProcedureViewController.m */,
 				73E868EE19432F3C004A7C62 /* RealTimeSignalsViewController.h */,
 				73E868EF19432F3C004A7C62 /* RealTimeSignalsViewController.m */,
 				01848513193F2A4500D5820B /* MainViewController.h */,
@@ -349,13 +364,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01512C10194C77E500F69E82 /* ProcedureViewController.m in Sources */,
 				018484F5193F284A00D5820B /* SecondViewController.m in Sources */,
 				018484E9193F284A00D5820B /* AppDelegate.m in Sources */,
 				73E868ED1942B83D004A7C62 /* TabBarViewController.m in Sources */,
 				012118A4193FE44F00CCA161 /* MercuryInstrument.m in Sources */,
 				733AC7C11944B56C00E5546C /* IPhoneFEPCriticalStatusViewController.m in Sources */,
+				73AC8599194D133E00141413 /* MercuryProcedureStatus.m in Sources */,
 				018484F2193F284A00D5820B /* FirstViewController.m in Sources */,
 				733AC7BE19449FA500E5546C /* IPhoneMainViewController.m in Sources */,
+				01512C0D194BBC6C00F69E82 /* MercuryFile.m in Sources */,
 				73E868F019432F3C004A7C62 /* RealTimeSignalsViewController.m in Sources */,
 				01848515193F2A4500D5820B /* MainViewController.m in Sources */,
 				018484E5193F284A00D5820B /* main.m in Sources */,
