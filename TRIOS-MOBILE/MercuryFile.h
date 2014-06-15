@@ -28,7 +28,7 @@ enum MercuryKnownFileType
 @property (strong, nonatomic) NSMutableData* data;
 @property (copy, nonatomic) NSString* filename;
 
-- (id <IMercuryRecord>) getMercuryRecordAtOffset:(int)index;
+- (id <IMercuryRecord>) getMercuryRecordAtOffset:(int)offset;
 
 @end
 
@@ -58,9 +58,12 @@ enum MercuryKnownFileType
 @property (strong, nonatomic) NSString* tag;
 @property (nonatomic) int length;
 @property (strong, nonatomic) NSData* data;
+
+-(instancetype)initWithTag:(NSString*)tag length:(int)length data:(NSData*)data;
 @end
 
 @interface MercuryDataRecord : MercuryRecord
+-(float)valueAtIndex:(int)index;
 @end
 
 @interface MercuryGetRecord : MercuryRecord

@@ -120,6 +120,31 @@
 }
 @end
 
+@implementation MercuryRecord
+-(instancetype)initWithTag:(NSString*)tag length:(int)length data:(NSData*)data
+{
+   if(self = [super init])
+   {
+      self.tag = [tag copy];
+      self.length = length;
+      self.data = [data copy];
+   }
+   
+   return self;
+}
+@end
+
+@implementation MercuryDataRecord
+-(float)valueAtIndex:(int)index
+{
+   float f;
+   
+   [self.data getBytes:&f range:NSMakeRange(index * 4, 4)];
+
+   return f;
+}
+@end
+
 @implementation MercuryFile
 {
    MercuryInstrument* _mercuryInstrument;
@@ -139,13 +164,48 @@
    return self;
 }
 
--(id<IMercuryRecord>)getMercuryRecordAtOffset:(int)index
+-(id<IMercuryRecord>)getMercuryRecordAtOffset:(int)offset
 {
-   //int dataLength = 0;
-   //int recordLength = 0;
-   //NSString* tag = @"";
+   int dataLength = 0;
+   int recordLength = 0;
+   NSString* tag = @"";
    
-   return nil;
+   NSArray* validTags = @[@"VER ",@"DATA",@"SGMT",@"STAT",@"GET ",@"ACTN",@"BLOB"];
+   
+   id<IMercuryRecord> r = nil;
+   
+   NSData* tagData = [NSData dataWithBytes:self.data.bytes + offset length:4];
+   
+   if (tagData == nil)
+      return nil;
+   
+   tag = [[NSString alloc]initWithData:tagData encoding:NSUTF8StringEncoding];
+   
+   if (![validTags containsObject:tag])
+   {
+      NSLog(@"UNKNOWN TAG ENCOUNTERED");
+      return nil;
+   }
+   
+   if ((offset + 4 + 4) >= self.data.length)
+      return nil;
+   
+   dataLength = [_mercuryInstrument uintAtOffset:offset + 4 inData:self.data];
+   recordLength = dataLength + 4 + 4;
+   
+   NSData* data;
+   if(dataLength > 0)
+      data = [NSData dataWithBytes:self.data.bytes + 8 length:dataLength];
+   
+   if(data == nil)
+      return nil;
+   
+   if ([tag isEqualToString:@"DATA"])
+      r = [[MercuryDataRecord alloc] initWithTag:tag length:recordLength data:data];
+   else
+      r = [[MercuryRecord alloc]initWithTag:tag length:recordLength data:data];
+   
+   return r;
 }
 @end
 

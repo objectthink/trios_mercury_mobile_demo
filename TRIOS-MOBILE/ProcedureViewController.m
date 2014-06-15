@@ -13,6 +13,7 @@
 @interface ProcedureViewController ()
 {
    MercuryInstrument* _instrument;
+   int _offset;
 }
 @end
 
@@ -26,6 +27,18 @@
 -(void)updated:(id<IMercuryFile>)file
 {
    NSLog(@"updated:%d",file.data.length);
+   
+   while (_offset < file.data.length)
+   {
+      id<IMercuryRecord> r = [file getMercuryRecordAtOffset:_offset];
+
+      if (r == nil)
+         break;
+      
+      NSLog(@"%@",r.tag);
+      
+      _offset += r.length;
+   }
 }
 
 - (IBAction)startProcedureTapped:(UIButton *)sender
@@ -43,6 +56,8 @@
 //    initWithFilename:@"Procedure.dat" offset:0 moveMethod:0 dataLengthRequested:100];
 //   
 //   [_instrument sendCommand:command];
+   
+   _offset = 0;
    
    MercuryFile* file =
    [[MercuryFile alloc]initWithInstrument:_instrument andFilename:@"Procedure.dat"];

@@ -45,7 +45,14 @@ union intToFloat
    
    const float value = convert.fp;
    
-   return value;   
+   //////////////////////////////////////////
+   //TEST
+   float testFloat;
+   [data getBytes:&testFloat range:NSMakeRange(offset, 4)];
+   
+   //////////////////////////////////////////
+
+   return value;
 }
 
 -(uint)uintAtOffset:(NSUInteger)offset inData:(NSData*)data
@@ -59,7 +66,14 @@ union intToFloat
    
    const uint value = convert.i;
    
-   return value;   
+   //////////////////////////////////////////
+   //TEST
+   int testInt;
+   [data getBytes:&testInt range:NSMakeRange(offset, 4)];
+   
+   //////////////////////////////////////////
+
+   return value;
 }
 @end
 
@@ -199,6 +213,7 @@ union intToFloat
              inData:(NSData*)data
 {
    assert([data length] >= offset + sizeof(float));
+   
    union intToFloat convert;
    
    const uint32_t* bytes = [data bytes] + offset;
