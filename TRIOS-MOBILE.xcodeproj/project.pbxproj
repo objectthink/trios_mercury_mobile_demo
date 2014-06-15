@@ -32,7 +32,7 @@
 		01848515193F2A4500D5820B /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01848514193F2A4500D5820B /* MainViewController.m */; };
 		733AC7BE19449FA500E5546C /* IPhoneMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 733AC7BD19449FA500E5546C /* IPhoneMainViewController.m */; };
 		733AC7C11944B56C00E5546C /* IPhoneFEPCriticalStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 733AC7C01944B56C00E5546C /* IPhoneFEPCriticalStatusViewController.m */; };
-		73AC8599194D133E00141413 /* MercuryProcedureStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 73AC8598194D133E00141413 /* MercuryProcedureStatus.m */; };
+		73AC8599194D133E00141413 /* MercuryStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 73AC8598194D133E00141413 /* MercuryStatus.m */; };
 		73E868ED1942B83D004A7C62 /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73E868EC1942B83D004A7C62 /* TabBarViewController.m */; };
 		73E868F019432F3C004A7C62 /* RealTimeSignalsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73E868EF19432F3C004A7C62 /* RealTimeSignalsViewController.m */; };
 		D612AD408778477CB388787D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F96985E5B4BE46578BA68F4C /* libPods.a */; };
@@ -87,8 +87,8 @@
 		733AC7BD19449FA500E5546C /* IPhoneMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPhoneMainViewController.m; sourceTree = "<group>"; };
 		733AC7BF1944B56C00E5546C /* IPhoneFEPCriticalStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPhoneFEPCriticalStatusViewController.h; sourceTree = "<group>"; };
 		733AC7C01944B56C00E5546C /* IPhoneFEPCriticalStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPhoneFEPCriticalStatusViewController.m; sourceTree = "<group>"; };
-		73AC8597194D133E00141413 /* MercuryProcedureStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MercuryProcedureStatus.h; sourceTree = "<group>"; };
-		73AC8598194D133E00141413 /* MercuryProcedureStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MercuryProcedureStatus.m; sourceTree = "<group>"; };
+		73AC8597194D133E00141413 /* MercuryStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MercuryStatus.h; sourceTree = "<group>"; };
+		73AC8598194D133E00141413 /* MercuryStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MercuryStatus.m; sourceTree = "<group>"; };
 		73E868EB1942B83D004A7C62 /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
 		73E868EC1942B83D004A7C62 /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
 		73E868EE19432F3C004A7C62 /* RealTimeSignalsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RealTimeSignalsViewController.h; sourceTree = "<group>"; };
@@ -169,8 +169,8 @@
 				012118A5193FF66400CCA161 /* Resources */,
 				012118A2193FE44F00CCA161 /* MercuryInstrument.h */,
 				012118A3193FE44F00CCA161 /* MercuryInstrument.m */,
-				73AC8597194D133E00141413 /* MercuryProcedureStatus.h */,
-				73AC8598194D133E00141413 /* MercuryProcedureStatus.m */,
+				73AC8597194D133E00141413 /* MercuryStatus.h */,
+				73AC8598194D133E00141413 /* MercuryStatus.m */,
 				01512C0B194BBC6C00F69E82 /* MercuryFile.h */,
 				01512C0C194BBC6C00F69E82 /* MercuryFile.m */,
 				73E868EB1942B83D004A7C62 /* TabBarViewController.h */,
@@ -370,7 +370,7 @@
 				73E868ED1942B83D004A7C62 /* TabBarViewController.m in Sources */,
 				012118A4193FE44F00CCA161 /* MercuryInstrument.m in Sources */,
 				733AC7C11944B56C00E5546C /* IPhoneFEPCriticalStatusViewController.m in Sources */,
-				73AC8599194D133E00141413 /* MercuryProcedureStatus.m in Sources */,
+				73AC8599194D133E00141413 /* MercuryStatus.m in Sources */,
 				018484F2193F284A00D5820B /* FirstViewController.m in Sources */,
 				733AC7BE19449FA500E5546C /* IPhoneMainViewController.m in Sources */,
 				01512C0D194BBC6C00F69E82 /* MercuryFile.m in Sources */,

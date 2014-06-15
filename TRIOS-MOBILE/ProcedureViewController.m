@@ -37,6 +37,20 @@
 
 -(void)stat:(NSData*)message withSubcommand:(uint)subcommand
 {
+   if(subcommand == ProcedureStatus)
+   {
+      MercuryProcedureStatus* status =
+      [[MercuryProcedureStatus alloc] initWithMessage:message];
+      
+      NSLog(@"run:%d end:%d",status.runStatus, status.endStatus);
+   }
+   if(subcommand == DataFileStatus)
+   {
+      MercuryDataFileStatus* status =
+      [[MercuryDataFileStatus alloc]initWithMessage:message];
+      
+      NSLog(@"length:%d state:%d",status.length, status.state);
+   }
 }
 
 -(void)     response:(NSData *)message

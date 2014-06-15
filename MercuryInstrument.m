@@ -50,11 +50,11 @@ union intToFloat
 @end
 
 @implementation MercuryStatus
--(id)initWithMessage:(NSMutableData*)message
+-(id)initWithMessage:(NSData*)message
 {
    if(self = [super init])
    {
-      self.bytes = [message copy];//[[NSMutableData alloc] init];
+      self.bytes = [message copy];
    }
    return self;
 }

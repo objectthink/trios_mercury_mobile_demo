@@ -39,7 +39,7 @@ typedef enum MercuryAccessType
 
 @property (strong, nonatomic) NSMutableData* bytes;
 
--(id)initWithMessage:(NSMutableData*)message;
+-(id)initWithMessage:(NSData*)message;
 -(NSMutableData*)getBytes;
 @end
 
