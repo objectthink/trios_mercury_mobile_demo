@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "MercuryInstrument.h"
+#import "MercuryStatus.h"
 
 enum MercuryKnownFileType
 {
@@ -24,7 +25,7 @@ enum MercuryKnownFileType
 
 @protocol IMercuryFile
 
-@property (strong, nonatomic) NSData* data;
+@property (strong, nonatomic) NSMutableData* data;
 @property (copy, nonatomic) NSString* filename;
 
 - (id <IMercuryRecord>) getMercuryRecordAtOffset:(int)index;
@@ -47,6 +48,12 @@ enum MercuryKnownFileType
 
 @end
 
+@interface MercuryReadFileResponse : MercuryResponse
+@property (strong, nonatomic) NSData* data;
+@property int length;
+-(instancetype)initWithMessage:(NSData*)message;
+@end
+
 @interface MercuryRecord : NSObject <IMercuryRecord>
 @property (strong, nonatomic) NSString* tag;
 @property (nonatomic) int length;
@@ -64,7 +71,7 @@ enum MercuryKnownFileType
 
 @interface MercuryFile : NSObject <IMercuryFile>
 
-@property (strong, nonatomic) NSData* data;
+@property (strong, nonatomic) NSMutableData* data;
 @property (copy, nonatomic) NSString* filename;
 
 -(id)initWithInstrument:(MercuryInstrument*)instrument andFilename:(NSString*)filename;
@@ -72,6 +79,8 @@ enum MercuryKnownFileType
 @end
 
 @interface MercuryDataFileReader : NSObject <MercuryInstrumentDelegate>
+
+@property (weak) id<IMercuryFileReader> delegate;
 
 -(id)initWithInstrument:(MercuryInstrument*)instrument file:(id<IMercuryFile>)file readSize:(uint)readSize;
 -(void)start;

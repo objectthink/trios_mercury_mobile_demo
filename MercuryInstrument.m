@@ -18,6 +18,20 @@ union intToFloat
 {
 }
 
+-(id)initWithMessage:(NSData*)message
+{
+   if(self = [super init])
+   {
+      self.bytes = [message copy];
+   }
+   return self;
+}
+
+-(NSMutableData*)getBytes
+{
+   return self.bytes;
+}
+
 -(float)floatAtOffset:(NSUInteger)offset inData:(NSData*)data;\
 {
    assert([data length] >= offset + sizeof(float));
@@ -50,19 +64,6 @@ union intToFloat
 @end
 
 @implementation MercuryStatus
--(id)initWithMessage:(NSData*)message
-{
-   if(self = [super init])
-   {
-      self.bytes = [message copy];
-   }
-   return self;
-}
-
--(NSMutableData*)getBytes
-{
-   return self.bytes;
-}
 @end
 
 @implementation MercuryCommand
@@ -77,14 +78,35 @@ union intToFloat
 
 -(NSMutableData*)getBytes
 {
+   [self.bytes setLength:0];
+
+   [self.bytes appendBytes:&subCommandId length:4];
+
    return self.bytes;
 }
+
 @end
 
 @implementation MercuryAction
 @end
 
 @implementation MercuryGet
+@end
+
+@implementation MercuryResponse
+@end
+
+@implementation MercuryStartProcedureCommand
+
+-(id)init
+{
+   if(self = [super init])
+   {
+      subCommandId = MercuryStartProcedureCommandId;
+   }
+   return self;
+}
+
 @end
 
 @implementation MercurySetRealTimeSignalsCommand

@@ -108,6 +108,18 @@
 
 @end
 
+@implementation MercuryReadFileResponse
+-(instancetype)initWithMessage:(NSData *)message
+{
+   if(self = [super initWithMessage:message])
+   {
+      self.length = [self uintAtOffset:0 inData:message];
+      self.data = [NSData dataWithBytes:[message bytes]+4 length:[message length]-4];
+   }
+   return self;
+}
+@end
+
 @implementation MercuryFile
 {
    MercuryInstrument* _mercuryInstrument;
@@ -122,7 +134,7 @@
    _mercuryInstrument = instrument;
    
    self.filename = filename;
-   self.data = [[NSData alloc] init];
+   self.data = [[NSMutableData alloc] init];
    
    return self;
 }
@@ -143,6 +155,9 @@
    id <IMercuryFile> _file;
    uint _readSize;
    int _offset;
+   uint _sequenceNumber;
+   
+   MercuryDataFileStatus* _fileStatus;
 }
 
 #pragma mark -
@@ -160,7 +175,7 @@
 
 -(void)start
 {
-   
+   [_instrument addDelegate:self];
 }
 
 #pragma mark MercuryInstrumentDelegate
@@ -174,6 +189,34 @@
 
 -(void)stat:(NSData*)message withSubcommand:(uint)subcommand
 {
+   if(subcommand==ProcedureStatus)
+   {
+   }
+
+   if(subcommand==DataFileStatus)
+   {
+      MercuryReadFileCommand* command =
+      [[MercuryReadFileCommand alloc]
+       initWithFilename:_file.filename
+       offset:_offset
+       moveMethod:0
+       dataLengthRequested:_readSize];
+      
+      _fileStatus =
+      [[MercuryDataFileStatus alloc]initWithMessage:message];
+      
+      switch (_fileStatus.state) {
+         case Open:
+            _sequenceNumber = [_instrument sendCommand:command];
+            break;
+         case Closed:
+            _sequenceNumber = [_instrument sendCommand:command];
+            break;
+         default:
+            break;
+      }
+      
+   }
 }
 
 -(void)     response:(NSData *)message
@@ -181,6 +224,35 @@
           subcommand:(uint)subcommand
               status:(uint)status
 {
+   if(subcommand == MercuryReadFileCommandId && _sequenceNumber == sequenceNumber)
+   {
+      MercuryReadFileResponse* response =
+      [[MercuryReadFileResponse alloc]initWithMessage:message];
+      
+      [_file.data appendData:response.data];
+      
+      _offset += response.length;
+      
+      [self.delegate updated:_file];
+      
+      if(_fileStatus.state == Open) return;
+      
+      if(_fileStatus.state == Closed && [_file.data length] < _fileStatus.length)
+      {
+         MercuryReadFileCommand* command =
+         [[MercuryReadFileCommand alloc]
+          initWithFilename:_file.filename
+          offset:_offset
+          moveMethod:0
+          dataLengthRequested:_readSize];
+
+         _sequenceNumber = [_instrument sendCommand:command];
+      }
+      else
+      {
+         [self.delegate finished:_file];
+      }
+   }
 }
 
 -(void)ackWithSequenceNumber:(uint)sequencenumber

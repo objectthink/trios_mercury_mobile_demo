@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "MercuryInstrument.h"
 #import "MercuryStatus.h"
+#import "MercuryFile.h"
 
-@interface ProcedureViewController : UIViewController <MercuryInstrumentDelegate>
+@interface ProcedureViewController : UIViewController <
+MercuryInstrumentDelegate,
+IMercuryFileReader
+>
 @end

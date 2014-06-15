@@ -8,41 +8,45 @@
 
 #import <Foundation/Foundation.h>
 #import "GCDAsyncSocket.h"
+
 typedef enum MercuryAccessType
 {
    Viewer = 1,
    Master = 2
 } MercuryAccess;
 
+typedef enum
+{
+   MercuryReadFileCommandId = 0x00000007,
+   MercuryStartProcedureCommandId = 0x00010006
+}
+MercuryCommandId;
+
 @interface MercuryInstrumentItem : NSObject
 {
 }
+@property (strong, nonatomic) NSMutableData* bytes;
+
 -(float)floatAtOffset:(NSUInteger)offset inData:(NSData*)data;
 -(uint)uintAtOffset:(NSUInteger)offset inData:(NSData*)data;
+
+-(id)initWithMessage:(NSData*)message;
+
+-(NSMutableData*)getBytes;
 @end
 
 @interface MercuryCommand : MercuryInstrumentItem
 {
    uint subCommandId;
 }
-
-@property (strong, nonatomic) NSMutableData* bytes;
-
 -(id)init;
--(NSMutableData*)getBytes;
 @end
 
 @interface MercuryStatus : MercuryInstrumentItem
 {
    uint subCommandId;
 }
-
-@property (strong, nonatomic) NSMutableData* bytes;
-
--(id)initWithMessage:(NSData*)message;
--(NSMutableData*)getBytes;
 @end
-
 
 @interface MercuryAction : MercuryCommand
 @end
@@ -50,11 +54,15 @@ typedef enum MercuryAccessType
 @interface MercuryGet : MercuryCommand
 @end
 
-@interface MercuryResponse : NSObject
+@interface MercuryResponse : MercuryInstrumentItem
 {
 }
 
 @property (strong, nonatomic) NSMutableData* bytes;
+@end
+
+@interface MercuryStartProcedureCommand : MercuryAction
+-(id)init;
 @end
 
 @interface MercurySetRealTimeSignalsCommand : MercuryAction
@@ -69,7 +77,6 @@ typedef enum MercuryAccessType
 @interface MercuryGetRealTimeSignalsResponse : MercuryResponse
 -(id)init;
 @end
-
 
 @protocol MercuryInstrumentDelegate <NSObject>
 -(void)connected;

@@ -18,13 +18,41 @@
 
 @implementation ProcedureViewController
 
-- (IBAction)testTapped:(id)sender
+-(void)finished:(id<IMercuryFile>)file
 {
-   MercuryReadFileCommand* command =
-   [[MercuryReadFileCommand alloc]
-    initWithFilename:@"Procedure.dat" offset:0 moveMethod:0 dataLengthRequested:100];
+   NSLog(@"finished:%d",file.data.length);   
+}
+
+-(void)updated:(id<IMercuryFile>)file
+{
+   NSLog(@"updated:%d",file.data.length);
+}
+
+- (IBAction)startProcedureTapped:(UIButton *)sender
+{
+   MercuryStartProcedureCommand* command =
+   [[MercuryStartProcedureCommand alloc]init];
    
    [_instrument sendCommand:command];
+}
+
+- (IBAction)testTapped:(id)sender
+{
+//   MercuryReadFileCommand* command =
+//   [[MercuryReadFileCommand alloc]
+//    initWithFilename:@"Procedure.dat" offset:0 moveMethod:0 dataLengthRequested:100];
+//   
+//   [_instrument sendCommand:command];
+   
+   MercuryFile* file =
+   [[MercuryFile alloc]initWithInstrument:_instrument andFilename:@"Procedure.dat"];
+   
+   MercuryDataFileReader* reader =
+   [[MercuryDataFileReader alloc]initWithInstrument:_instrument file:file readSize:2048];
+   
+   reader.delegate = self;
+   
+   [reader start];
 }
 
 -(void)connected
@@ -62,10 +90,8 @@
    {
       if(status==0)
       {
-         //float length = [_instrument uintAtOffset:0 inData:message];
-      }
-      else
-      {
+         MercuryReadFileResponse* response =
+         [[MercuryReadFileResponse alloc]initWithMessage:message];
          
       }
    }
