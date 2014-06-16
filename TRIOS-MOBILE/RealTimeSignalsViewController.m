@@ -20,7 +20,7 @@
 @end
 
 @implementation RealTimeSignalsViewController
--(int)tableView:tableView numberOfRowsInSection:(NSInteger)section
+-(long)tableView:tableView numberOfRowsInSection:(NSInteger)section
 {
    return [signalsList count];
 }
@@ -90,7 +90,7 @@
    {
       [signals removeAllObjects];
       
-      int signalCount = [message length]/4;
+      long signalCount = [message length]/4;
       for (int i = 1; i < signalCount -1; i++)
       {
          float signal = [_instrument floatAtOffset:i*4 inData:message];
@@ -110,7 +110,7 @@
    {
       [signalsList removeAllObjects];
       
-      int signalCount = [message length]/4;
+      long signalCount = [message length]/4;
       for (int i =0; i < signalCount; i++)
       {
          uint signal = [_instrument uintAtOffset:i*4 inData:message];

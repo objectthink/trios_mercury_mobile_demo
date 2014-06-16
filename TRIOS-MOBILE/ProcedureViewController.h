@@ -15,4 +15,6 @@
 MercuryInstrumentDelegate,
 IMercuryFileReader
 >
+@property (weak, nonatomic) IBOutlet UILabel *dataLabel;
+@property (weak, nonatomic) IBOutlet UILabel *doneLabel;
 @end

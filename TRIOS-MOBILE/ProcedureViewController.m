@@ -21,12 +21,15 @@
 
 -(void)finished:(id<IMercuryFile>)file
 {
-   NSLog(@"finished:%d",file.data.length);   
+   NSLog(@"finished:%lu",(unsigned long)file.data.length);
+   
+   self.doneLabel.text =
+   [NSString stringWithFormat:@"finished:%lu",(unsigned long)file.data.length];
 }
 
 -(void)updated:(id<IMercuryFile>)file
 {
-   NSLog(@"updated:%d",file.data.length);
+   NSLog(@"updated:%lu",(unsigned long)file.data.length);
    
    while (_offset < file.data.length)
    {
@@ -45,7 +48,10 @@
       {
          MercuryDataRecord* dr = r;
          
-         NSLog(@"%f",[dr valueAtIndex:0]);
+         //NSLog(@"%f",[dr valueAtIndex:0]);
+         
+         self.dataLabel.text =
+         [NSString stringWithFormat:@"%f",[dr valueAtIndex:0]];
       }
    }
 }
@@ -72,7 +78,7 @@
    [[MercuryFile alloc]initWithInstrument:_instrument andFilename:@"Procedure.dat"];
    
    MercuryDataFileReader* reader =
-   [[MercuryDataFileReader alloc]initWithInstrument:_instrument file:file readSize:2048];
+   [[MercuryDataFileReader alloc]initWithInstrument:_instrument file:file readSize:8192];
    
    reader.delegate = self;
    
@@ -114,8 +120,8 @@
    {
       if(status==0)
       {
-         MercuryReadFileResponse* response =
-         [[MercuryReadFileResponse alloc]initWithMessage:message];
+         //MercuryReadFileResponse* response =
+         //[[MercuryReadFileResponse alloc]initWithMessage:message];
          
       }
    }

@@ -317,7 +317,7 @@ union intToFloat
    
    NSMutableData* message = [[NSMutableData alloc]init];
    
-   uint length = [[command getBytes] length];   //(uint)[command.bytes length];
+   uint length = (uint)[[command getBytes] length];   //(uint)[command.bytes length];
    
    uint action = 0x4E544341;
    uint get = 0x20544547;
