@@ -195,7 +195,7 @@
    
    NSData* data;
    if(dataLength > 0)
-      data = [NSData dataWithBytes:self.data.bytes + 8 length:dataLength];
+      data = [NSData dataWithBytes:self.data.bytes + offset + 8 length:dataLength];
    
    if(data == nil)
       return nil;

@@ -31,6 +31,8 @@
    while (_offset < file.data.length)
    {
       id<IMercuryRecord> r = [file getMercuryRecordAtOffset:_offset];
+      
+      id s = r;
 
       if (r == nil)
          break;
@@ -38,6 +40,13 @@
       NSLog(@"%@",r.tag);
       
       _offset += r.length;
+      
+      if([s isKindOfClass:MercuryDataRecord.class])
+      {
+         MercuryDataRecord* dr = r;
+         
+         NSLog(@"%f",[dr valueAtIndex:0]);
+      }
    }
 }
 
