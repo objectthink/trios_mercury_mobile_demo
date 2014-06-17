@@ -51,7 +51,7 @@
          //NSLog(@"%f",[dr valueAtIndex:0]);
          
          self.dataLabel.text =
-         [NSString stringWithFormat:@"%f",[dr valueAtIndex:0]];
+         [NSString stringWithFormat:@"%f",[dr valueAtIndex:9]];
       }
    }
 }

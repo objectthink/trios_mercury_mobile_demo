@@ -193,6 +193,9 @@
    dataLength = [_mercuryInstrument uintAtOffset:offset + 4 inData:self.data];
    recordLength = dataLength + 4 + 4;
    
+   if (recordLength + offset > self.data.length)
+      return nil;
+   
    NSData* data;
    if(dataLength > 0)
       data = [NSData dataWithBytes:self.data.bytes + offset + 8 length:dataLength];
