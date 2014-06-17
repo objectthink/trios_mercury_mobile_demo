@@ -17,4 +17,6 @@ IMercuryFileReader
 >
 @property (weak, nonatomic) IBOutlet UILabel *dataLabel;
 @property (weak, nonatomic) IBOutlet UILabel *doneLabel;
+@property (strong, nonatomic) IBOutlet UILabel *ProcedureStatusData;
+@property (strong, nonatomic) IBOutlet UILabel *DataFileStatusData;
 @end

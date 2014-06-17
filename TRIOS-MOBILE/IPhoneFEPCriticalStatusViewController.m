@@ -178,7 +178,7 @@
 {
 }
 
--(long)tableView:tableView numberOfRowsInSection:(NSInteger)section
+-(int)tableView:tableView numberOfRowsInSection:(NSInteger)section
 {
    return [status.names count];
 }

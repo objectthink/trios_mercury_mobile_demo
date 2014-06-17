@@ -20,7 +20,7 @@
 @end
 
 @implementation RealTimeSignalsViewController
--(long)tableView:tableView numberOfRowsInSection:(NSInteger)section
+-(int)tableView:tableView numberOfRowsInSection:(NSInteger)section
 {
    return [signalsList count];
 }

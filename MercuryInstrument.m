@@ -111,7 +111,6 @@ union intToFloat
 @end
 
 @implementation MercuryStartProcedureCommand
-
 -(id)init
 {
    if(self = [super init])
@@ -120,7 +119,28 @@ union intToFloat
    }
    return self;
 }
+@end
 
+@implementation MercuryGetProcedureStatusCommand
+-(id)init
+{
+   if(self = [super init])
+   {
+      subCommandId = MercuryGetProcedureStatusCommandId;
+   }
+   return self;
+}
+@end
+
+@implementation MercuryGetDataFileStatusCommand
+-(id)init
+{
+   if(self = [super init])
+   {
+      subCommandId = MercuryGetDataFileStatusCommandId;
+   }
+   return self;
+}
 @end
 
 @implementation MercurySetRealTimeSignalsCommand

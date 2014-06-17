@@ -18,7 +18,9 @@ typedef enum MercuryAccessType
 typedef enum
 {
    MercuryReadFileCommandId = 0x00000007,
-   MercuryStartProcedureCommandId = 0x00010006
+   MercuryStartProcedureCommandId = 0x00010006,
+   MercuryGetProcedureStatusCommandId = 0x00000009,
+   MercuryGetDataFileStatusCommandId = 0x00000006
 }
 MercuryCommandId;
 
@@ -62,6 +64,14 @@ MercuryCommandId;
 @end
 
 @interface MercuryStartProcedureCommand : MercuryAction
+-(id)init;
+@end
+
+@interface MercuryGetProcedureStatusCommand : MercuryGet
+-(id)init;
+@end
+
+@interface MercuryGetDataFileStatusCommand : MercuryGet
 -(id)init;
 @end
 

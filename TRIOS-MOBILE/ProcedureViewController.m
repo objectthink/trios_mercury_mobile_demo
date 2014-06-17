@@ -33,7 +33,7 @@
    
    while (_offset < file.data.length)
    {
-      id<IMercuryRecord> r = [file getMercuryRecordAtOffset:_offset];
+      MercuryRecord* r = (MercuryRecord*)[file getMercuryRecordAtOffset:_offset];
       
       id s = r;
 
@@ -46,7 +46,7 @@
       
       if([s isKindOfClass:MercuryDataRecord.class])
       {
-         MercuryDataRecord* dr = r;
+         MercuryDataRecord* dr = (MercuryDataRecord*)r;
          
          //NSLog(@"%f",[dr valueAtIndex:0]);
          
@@ -100,14 +100,77 @@
       MercuryProcedureStatus* status =
       [[MercuryProcedureStatus alloc] initWithMessage:message];
       
-      NSLog(@"run:%d end:%d",status.runStatus, status.endStatus);
+      //NSLog(@"run:%d end:%d",status.runStatus, status.endStatus);
+      
+      NSString* runStatus;
+      switch (status.runStatus)
+      {
+         case Idle:
+            runStatus = @"Idle";
+            break;
+         case PostTest:
+            runStatus = @"PostTest";
+            break;
+         case PreTest:
+            runStatus = @"PreTest";
+            break;
+         case Test:
+            runStatus = @"Test";
+            break;
+         default:
+            runStatus = @"Unknown";
+            break;
+      }
+      
+      NSString* endStatus;
+      switch (status.endStatus) {
+         case Complete:
+            endStatus = @"Complete";
+            break;
+         case Error:
+            endStatus = @"Error";
+            break;
+         case NotRun:
+            endStatus = @"NotRun";
+            break;
+         case Running:
+            endStatus = @"Running";
+            break;
+         case UserStopped:
+            endStatus = @"UserStopped";
+            break;
+         default:
+            endStatus = @"Unknown";
+            break;
+      }
+      
+      self.ProcedureStatusData.text =
+      [NSString stringWithFormat:@"runstatus: %@ endstatus: %@ segment: %d",
+       runStatus , endStatus, status.currentSegmentId];
    }
+   
    if(subcommand == DataFileStatus)
    {
       MercuryDataFileStatus* status =
       [[MercuryDataFileStatus alloc]initWithMessage:message];
       
-      NSLog(@"length:%d state:%d",status.length, status.state);
+      NSString* state;
+      switch (status.state) {
+         case Open:
+            state = @"Open";
+            break;
+         case Closed:
+            state = @"Closed";
+            break;
+         case DoesNotExist:
+            state = @"DoesNotExist";
+         default:
+            state = @"Unkown";
+            break;
+      }
+      
+      self.DataFileStatusData.text =
+      [NSString stringWithFormat:@"length: %d  state: %@", status.length, state];
    }
 }
 
@@ -160,6 +223,9 @@
    //_instrument.instrumentDelegate = self;
    
    [_instrument addDelegate:self];
+   
+   [_instrument sendCommand:[[MercuryGetProcedureStatusCommand alloc]init]];
+   [_instrument sendCommand:[[MercuryGetDataFileStatusCommand alloc]init]];
    
    self.title = @"Procedure";
 }

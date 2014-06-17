@@ -14,8 +14,8 @@
 {
    if(self = [super initWithMessage:message])
    {
-      self.endStatus = (int)[self uintAtOffset:4 inData:message];
-      self.runStatus = (int)[self uintAtOffset:8 inData:message];
+      self.runStatus = (int)[self uintAtOffset:4 inData:message];
+      self.endStatus = (int)[self uintAtOffset:8 inData:message];
       self.currentSegmentId = (int)[self uintAtOffset:12 inData:message];      
    }
    return self;
