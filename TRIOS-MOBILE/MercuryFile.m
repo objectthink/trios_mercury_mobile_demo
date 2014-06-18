@@ -66,7 +66,7 @@
    char a = 'a';
    char t = 't';
 
-   [self.bytes appendBytes:&length length:4];
+   //[self.bytes appendBytes:&length length:4];
 
    [tempFilename appendBytes:&p length:1];
    [tempFilename appendBytes:&zero length:1];
@@ -97,12 +97,11 @@
    [tempFilename appendBytes:&zero length:1];
    [tempFilename appendBytes:&zero length:1];
    
-   [self.bytes appendData:tempFilename];
-
    [self.bytes appendBytes:&_offset length:4];
    [self.bytes appendBytes:&_moveMethod length:4];
    [self.bytes appendBytes:&_dataLengthRequested length:4];
-   
+   [self.bytes appendData:tempFilename];
+
    return self.bytes;
 }
 
@@ -113,8 +112,7 @@
 {
    if(self = [super initWithMessage:message])
    {
-      self.length = [self uintAtOffset:0 inData:message];
-      self.data = [NSData dataWithBytes:[message bytes]+4 length:[message length]-4];
+      self.data = [NSData dataWithBytes:[message bytes] length:[message length]];
    }
    return self;
 }
@@ -132,6 +130,9 @@
    
    return self;
 }
+@end
+
+@implementation MercuryGetRecord
 @end
 
 @implementation MercuryDataRecord
@@ -166,14 +167,14 @@
 
 -(id<IMercuryRecord>)getMercuryRecordAtOffset:(int)offset
 {
+   id<IMercuryRecord> r = nil;
+
    int dataLength = 0;
    int recordLength = 0;
    NSString* tag = @"";
    
    NSArray* validTags = @[@"VER ",@"DATA",@"SGMT",@"STAT",@"GET ",@"ACTN",@"BLOB"];
-   
-   id<IMercuryRecord> r = nil;
-   
+      
    NSData* tagData = [NSData dataWithBytes:self.data.bytes + offset length:4];
    
    if (tagData == nil)
@@ -205,9 +206,11 @@
    
    if ([tag isEqualToString:@"DATA"])
       r = [[MercuryDataRecord alloc] initWithTag:tag length:recordLength data:data];
+   else if([tag isEqualToString:@"GET "])
+      r = [[MercuryGetRecord alloc]initWithTag:tag length:recordLength data:data];
    else
       r = [[MercuryRecord alloc]initWithTag:tag length:recordLength data:data];
-   
+
    return r;
 }
 @end
@@ -294,7 +297,7 @@
       
       [_file.data appendData:response.data];
       
-      _offset += response.length;
+      _offset += response.data.length;
       
       [self.delegate updated:_file];
       

@@ -7,16 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
+
 #import "MercuryInstrument.h"
 #import "MercuryStatus.h"
 #import "MercuryFile.h"
+#import "MercuryProcedure.h"
 
 @interface ProcedureViewController : UIViewController <
 MercuryInstrumentDelegate,
-IMercuryFileReader
+IMercuryFileReader,
+UITableViewDataSource,
+UITableViewDelegate
 >
 @property (weak, nonatomic) IBOutlet UILabel *dataLabel;
 @property (weak, nonatomic) IBOutlet UILabel *doneLabel;
 @property (strong, nonatomic) IBOutlet UILabel *ProcedureStatusData;
 @property (strong, nonatomic) IBOutlet UILabel *DataFileStatusData;
+@property (strong, nonatomic) IBOutlet UITableView *SignalTableView;
 @end

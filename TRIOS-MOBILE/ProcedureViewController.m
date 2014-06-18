@@ -7,17 +7,49 @@
 //
 
 #import "ProcedureViewController.h"
-#import "AppDelegate.h"
-#import "MercuryFile.h"
 
 @interface ProcedureViewController ()
 {
    MercuryInstrument* _instrument;
+   MercuryGetProcedureResponse* _procedure;
+   MercuryDataRecord* _dataRecord;
    int _offset;
 }
 @end
 
 @implementation ProcedureViewController
+
+//TODO:add signals property to get procedure response
+-(int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+   if(_procedure != nil)
+   {
+      return _procedure.bytes.length  / 4;
+   }
+   else
+      return 0;
+}
+
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"MyIdentifier"];
+   
+   if (cell == nil)
+   {
+      cell = [[UITableViewCell alloc]
+              initWithStyle:UITableViewCellStyleSubtitle
+              reuseIdentifier:@"MyIdentifier"];
+      
+   }
+   
+   cell.selectionStyle = UITableViewCellSelectionStyleNone;
+   cell.textLabel.text = [_procedure signalToString:[_procedure signalAtIndex:indexPath.row]];
+   
+   cell.detailTextLabel.text =
+   [NSString stringWithFormat:@"%f",[_dataRecord valueAtIndex:indexPath.row]];
+   
+   return cell;
+}
 
 -(void)finished:(id<IMercuryFile>)file
 {
@@ -30,7 +62,6 @@
 -(void)updated:(id<IMercuryFile>)file
 {
    NSLog(@"updated:%lu",(unsigned long)file.data.length);
-   
    while (_offset < file.data.length)
    {
       MercuryRecord* r = (MercuryRecord*)[file getMercuryRecordAtOffset:_offset];
@@ -46,12 +77,21 @@
       
       if([s isKindOfClass:MercuryDataRecord.class])
       {
-         MercuryDataRecord* dr = (MercuryDataRecord*)r;
+         _dataRecord = (MercuryDataRecord*)r;
          
-         //NSLog(@"%f",[dr valueAtIndex:0]);
+         //self.dataLabel.text =
+         //[NSString stringWithFormat:@"%f",[_dataRecord valueAtIndex:0]];
          
-         self.dataLabel.text =
-         [NSString stringWithFormat:@"%f",[dr valueAtIndex:9]];
+         [self.SignalTableView reloadData];
+      }
+      
+      if([s isKindOfClass:MercuryGetRecord.class])
+      {
+         MercuryGetRecord* gr = (MercuryGetRecord*)r;
+         
+         _procedure =
+         [[MercuryGetProcedureResponse alloc]initWithMessage:gr.data];
+         
       }
    }
 }
@@ -219,8 +259,6 @@
    AppDelegate* app = [[UIApplication sharedApplication] delegate];
    
    _instrument = [app instrument];
-   
-   //_instrument.instrumentDelegate = self;
    
    [_instrument addDelegate:self];
    

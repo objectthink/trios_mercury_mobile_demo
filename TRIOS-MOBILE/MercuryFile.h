@@ -50,7 +50,6 @@ enum MercuryKnownFileType
 
 @interface MercuryReadFileResponse : MercuryResponse
 @property (strong, nonatomic) NSData* data;
-@property int length;
 -(instancetype)initWithMessage:(NSData*)message;
 @end
 
