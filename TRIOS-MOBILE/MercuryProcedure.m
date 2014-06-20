@@ -23,7 +23,7 @@
    }
    else
    {
-      return @"UNKNONW";
+      return @"UNKNOWN";
    }
 }
 

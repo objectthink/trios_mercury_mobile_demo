@@ -45,7 +45,7 @@
    [muFilename appendBytes:&zero length:sizeof(wchar_t)];
    
    //uint filenameLength = [muFilename length];
-   uint length = 28;
+   //uint length = 28;
    
    [self.bytes appendBytes:&subCommandId length:4];
    

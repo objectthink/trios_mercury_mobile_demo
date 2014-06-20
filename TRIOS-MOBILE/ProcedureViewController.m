@@ -20,11 +20,11 @@
 @implementation ProcedureViewController
 
 //TODO:add signals property to get procedure response
--(int)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
    if(_procedure != nil)
    {
-      return _procedure.bytes.length  / 4;
+      return (int) _procedure.bytes.length  / 4;
    }
    else
       return 0;
@@ -43,10 +43,10 @@
    }
    
    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-   cell.textLabel.text = [_procedure signalToString:[_procedure signalAtIndex:indexPath.row]];
+   cell.textLabel.text = [_procedure signalToString:[_procedure signalAtIndex:(int)indexPath.row]];
    
    cell.detailTextLabel.text =
-   [NSString stringWithFormat:@"%f",[_dataRecord valueAtIndex:indexPath.row]];
+   [NSString stringWithFormat:@"%f",[_dataRecord valueAtIndex:(int)indexPath.row]];
    
    return cell;
 }
