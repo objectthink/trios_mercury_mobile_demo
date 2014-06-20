@@ -8,6 +8,7 @@
 
 #import "MercuryProcedure.h"
 
+
 @implementation MercuryGetProcedureResponse
 {
    NSDictionary* _signalToString;

@@ -7,6 +7,7 @@
 //
 
 #import "ProcedureViewController.h"
+#import "ProcedureViewTableViewCell.h"
 
 @interface ProcedureViewController ()
 {
@@ -18,6 +19,11 @@
 @end
 
 @implementation ProcedureViewController
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+   [self performSegueWithIdentifier:@"SignalDetail" sender:self];
+}
 
 //TODO:add signals property to get procedure response
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -36,13 +42,16 @@
    
    if (cell == nil)
    {
-      cell = [[UITableViewCell alloc]
+//      cell = [[UITableViewCell alloc]
+//              initWithStyle:UITableViewCellStyleSubtitle
+//              reuseIdentifier:@"MyIdentifier"];
+      
+      cell = [[ProcedureViewTableViewCell alloc]
               initWithStyle:UITableViewCellStyleSubtitle
               reuseIdentifier:@"MyIdentifier"];
-      
    }
    
-   cell.selectionStyle = UITableViewCellSelectionStyleNone;
+   //cell.selectionStyle = UITableViewCellSelectionStyleNone;
    cell.textLabel.text = [_procedure signalToString:[_procedure signalAtIndex:(int)indexPath.row]];
    
    cell.detailTextLabel.text =

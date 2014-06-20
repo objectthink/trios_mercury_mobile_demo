@@ -26,8 +26,8 @@
 
 -(void)viewDidDisappear:(BOOL)animated
 {
-   AppDelegate* app = [[UIApplication sharedApplication] delegate];
-   [[app instrument] disconnect];
+   //AppDelegate* app = [[UIApplication sharedApplication] delegate];
+   //[[app instrument] disconnect];
 }
 
 - (void)viewDidLoad

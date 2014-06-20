@@ -19,6 +19,9 @@
 @end
 
 @implementation MainViewController
+{
+   BOOL _connected;
+}
 
 -(void)response:(NSData *)message withSequenceNumber:(uint)sequenceNumber subcommand:(uint)subcommand status:(uint)status
 {
@@ -81,6 +84,8 @@
           machineName:@"SUPER-SECRET-IPAD"
             ipAddress:self.ipAddressText.text
                access:access];
+   
+   _connected = YES;
 }
 
 -(void)accept:(MercuryAccess)accessIn
@@ -143,6 +148,13 @@
 -(void)viewWillAppear:(BOOL)animated
 {
    _instrument.instrumentDelegate = self;
+   
+   if(_connected == YES)
+   {
+      _connected = NO;
+      
+      [_instrument disconnect];
+   }
 }
 
 - (void)didReceiveMemoryWarning

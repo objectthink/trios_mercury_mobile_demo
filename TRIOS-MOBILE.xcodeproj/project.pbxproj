@@ -30,6 +30,7 @@
 		01848508193F284A00D5820B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 01848506193F284A00D5820B /* InfoPlist.strings */; };
 		0184850A193F284A00D5820B /* TRIOS_MOBILETests.m in Sources */ = {isa = PBXBuildFile; fileRef = 01848509193F284A00D5820B /* TRIOS_MOBILETests.m */; };
 		01848515193F2A4500D5820B /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01848514193F2A4500D5820B /* MainViewController.m */; };
+		01C4D2591953C1E500AA5523 /* ProcedureViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01C4D2581953C1E500AA5523 /* ProcedureViewTableViewCell.m */; };
 		733AC7BE19449FA500E5546C /* IPhoneMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 733AC7BD19449FA500E5546C /* IPhoneMainViewController.m */; };
 		733AC7C11944B56C00E5546C /* IPhoneFEPCriticalStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 733AC7C01944B56C00E5546C /* IPhoneFEPCriticalStatusViewController.m */; };
 		73A9E91319510E8A003150E1 /* MercuryProcedure.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A9E91219510E8A003150E1 /* MercuryProcedure.m */; };
@@ -83,6 +84,8 @@
 		01848509193F284A00D5820B /* TRIOS_MOBILETests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRIOS_MOBILETests.m; sourceTree = "<group>"; };
 		01848513193F2A4500D5820B /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		01848514193F2A4500D5820B /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		01C4D2571953C1E500AA5523 /* ProcedureViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcedureViewTableViewCell.h; sourceTree = "<group>"; };
+		01C4D2581953C1E500AA5523 /* ProcedureViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureViewTableViewCell.m; sourceTree = "<group>"; };
 		1502EDB792854FBC99680EFA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		733AC7BC19449FA500E5546C /* IPhoneMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPhoneMainViewController.h; sourceTree = "<group>"; };
 		733AC7BD19449FA500E5546C /* IPhoneMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPhoneMainViewController.m; sourceTree = "<group>"; };
@@ -188,6 +191,8 @@
 				733AC7C01944B56C00E5546C /* IPhoneFEPCriticalStatusViewController.m */,
 				018484EA193F284A00D5820B /* Main_iPhone.storyboard */,
 				018484ED193F284A00D5820B /* Main_iPad.storyboard */,
+				01C4D2571953C1E500AA5523 /* ProcedureViewTableViewCell.h */,
+				01C4D2581953C1E500AA5523 /* ProcedureViewTableViewCell.m */,
 				01512C0E194C77E500F69E82 /* ProcedureViewController.h */,
 				01512C0F194C77E500F69E82 /* ProcedureViewController.m */,
 				73E868EE19432F3C004A7C62 /* RealTimeSignalsViewController.h */,
@@ -371,6 +376,7 @@
 			files = (
 				01512C10194C77E500F69E82 /* ProcedureViewController.m in Sources */,
 				018484F5193F284A00D5820B /* SecondViewController.m in Sources */,
+				01C4D2591953C1E500AA5523 /* ProcedureViewTableViewCell.m in Sources */,
 				018484E9193F284A00D5820B /* AppDelegate.m in Sources */,
 				73A9E91319510E8A003150E1 /* MercuryProcedure.m in Sources */,
 				73E868ED1942B83D004A7C62 /* TabBarViewController.m in Sources */,
