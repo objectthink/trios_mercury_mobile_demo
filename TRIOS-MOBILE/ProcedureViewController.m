@@ -15,10 +15,17 @@
    MercuryGetProcedureResponse* _procedure;
    MercuryDataRecord* _dataRecord;
    int _offset;
+   
+   NSObject<MercuryDataFileVisualizer>* _dataFileVisualizer;
 }
 @end
 
 @implementation ProcedureViewController
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+   _dataFileVisualizer = [segue destinationViewController];
+}
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -42,10 +49,6 @@
    
    if (cell == nil)
    {
-//      cell = [[UITableViewCell alloc]
-//              initWithStyle:UITableViewCellStyleSubtitle
-//              reuseIdentifier:@"MyIdentifier"];
-      
       cell = [[ProcedureViewTableViewCell alloc]
               initWithStyle:UITableViewCellStyleSubtitle
               reuseIdentifier:@"MyIdentifier"];
@@ -68,6 +71,7 @@
    [NSString stringWithFormat:@"finished:%lu",(unsigned long)file.data.length];
 }
 
+float t = 0.0f;
 -(void)updated:(id<IMercuryFile>)file
 {
    NSLog(@"updated:%lu",(unsigned long)file.data.length);
@@ -88,8 +92,7 @@
       {
          _dataRecord = (MercuryDataRecord*)r;
          
-         //self.dataLabel.text =
-         //[NSString stringWithFormat:@"%f",[_dataRecord valueAtIndex:0]];
+         [_dataFileVisualizer pointData:[_dataRecord valueAtIndex:9] time:t++];
          
          [self.SignalTableView reloadData];
       }

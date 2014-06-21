@@ -17,6 +17,10 @@ enum MercuryKnownFileType
    ProcedureEpilogue
 };
 
+@protocol MercuryDataFileVisualizer <NSObject>
+-(void)pointData:(float)data time:(float)time;
+@end
+
 @protocol IMercuryRecord
 @property (strong, nonatomic) NSString* tag;
 @property (nonatomic) int length;

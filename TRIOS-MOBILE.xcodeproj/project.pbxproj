@@ -33,6 +33,12 @@
 		01C4D2591953C1E500AA5523 /* ProcedureViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01C4D2581953C1E500AA5523 /* ProcedureViewTableViewCell.m */; };
 		733AC7BE19449FA500E5546C /* IPhoneMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 733AC7BD19449FA500E5546C /* IPhoneMainViewController.m */; };
 		733AC7C11944B56C00E5546C /* IPhoneFEPCriticalStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 733AC7C01944B56C00E5546C /* IPhoneFEPCriticalStatusViewController.m */; };
+		73A623721955F087006AB95F /* ProcedureDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A623711955F087006AB95F /* ProcedureDetailViewController.m */; };
+		73A623741955F179006AB95F /* ShinobiCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73A623731955F179006AB95F /* ShinobiCharts.framework */; };
+		73A623761955F247006AB95F /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73A623751955F247006AB95F /* CoreText.framework */; };
+		73A623781955F253006AB95F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73A623771955F253006AB95F /* QuartzCore.framework */; };
+		73A6237A1955F26C006AB95F /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73A623791955F26C006AB95F /* OpenGLES.framework */; };
+		73A6237C1955F285006AB95F /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 73A6237B1955F285006AB95F /* libstdc++.dylib */; };
 		73A9E91319510E8A003150E1 /* MercuryProcedure.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A9E91219510E8A003150E1 /* MercuryProcedure.m */; };
 		73AC8599194D133E00141413 /* MercuryStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 73AC8598194D133E00141413 /* MercuryStatus.m */; };
 		73E868ED1942B83D004A7C62 /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73E868EC1942B83D004A7C62 /* TabBarViewController.m */; };
@@ -91,6 +97,13 @@
 		733AC7BD19449FA500E5546C /* IPhoneMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPhoneMainViewController.m; sourceTree = "<group>"; };
 		733AC7BF1944B56C00E5546C /* IPhoneFEPCriticalStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPhoneFEPCriticalStatusViewController.h; sourceTree = "<group>"; };
 		733AC7C01944B56C00E5546C /* IPhoneFEPCriticalStatusViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPhoneFEPCriticalStatusViewController.m; sourceTree = "<group>"; };
+		73A623701955F087006AB95F /* ProcedureDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcedureDetailViewController.h; sourceTree = "<group>"; };
+		73A623711955F087006AB95F /* ProcedureDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureDetailViewController.m; sourceTree = "<group>"; };
+		73A623731955F179006AB95F /* ShinobiCharts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShinobiCharts.framework; path = Library/Frameworks/ShinobiCharts.framework; sourceTree = DEVELOPER_DIR; };
+		73A623751955F247006AB95F /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		73A623771955F253006AB95F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		73A623791955F26C006AB95F /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		73A6237B1955F285006AB95F /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		73A9E91119510E8A003150E1 /* MercuryProcedure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MercuryProcedure.h; sourceTree = "<group>"; };
 		73A9E91219510E8A003150E1 /* MercuryProcedure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MercuryProcedure.m; sourceTree = "<group>"; };
 		73AC8597194D133E00141413 /* MercuryStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MercuryStatus.h; sourceTree = "<group>"; };
@@ -107,6 +120,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73A6237C1955F285006AB95F /* libstdc++.dylib in Frameworks */,
+				73A6237A1955F26C006AB95F /* OpenGLES.framework in Frameworks */,
+				73A623781955F253006AB95F /* QuartzCore.framework in Frameworks */,
+				73A623761955F247006AB95F /* CoreText.framework in Frameworks */,
+				73A623741955F179006AB95F /* ShinobiCharts.framework in Frameworks */,
 				018484DB193F284A00D5820B /* CoreGraphics.framework in Frameworks */,
 				018484DD193F284A00D5820B /* UIKit.framework in Frameworks */,
 				018484D9193F284A00D5820B /* Foundation.framework in Frameworks */,
@@ -160,6 +178,11 @@
 		018484D7193F284A00D5820B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				73A6237B1955F285006AB95F /* libstdc++.dylib */,
+				73A623791955F26C006AB95F /* OpenGLES.framework */,
+				73A623771955F253006AB95F /* QuartzCore.framework */,
+				73A623751955F247006AB95F /* CoreText.framework */,
+				73A623731955F179006AB95F /* ShinobiCharts.framework */,
 				018484D8193F284A00D5820B /* Foundation.framework */,
 				018484DA193F284A00D5820B /* CoreGraphics.framework */,
 				018484DC193F284A00D5820B /* UIKit.framework */,
@@ -191,6 +214,8 @@
 				733AC7C01944B56C00E5546C /* IPhoneFEPCriticalStatusViewController.m */,
 				018484EA193F284A00D5820B /* Main_iPhone.storyboard */,
 				018484ED193F284A00D5820B /* Main_iPad.storyboard */,
+				73A623701955F087006AB95F /* ProcedureDetailViewController.h */,
+				73A623711955F087006AB95F /* ProcedureDetailViewController.m */,
 				01C4D2571953C1E500AA5523 /* ProcedureViewTableViewCell.h */,
 				01C4D2581953C1E500AA5523 /* ProcedureViewTableViewCell.m */,
 				01512C0E194C77E500F69E82 /* ProcedureViewController.h */,
@@ -379,6 +404,7 @@
 				01C4D2591953C1E500AA5523 /* ProcedureViewTableViewCell.m in Sources */,
 				018484E9193F284A00D5820B /* AppDelegate.m in Sources */,
 				73A9E91319510E8A003150E1 /* MercuryProcedure.m in Sources */,
+				73A623721955F087006AB95F /* ProcedureDetailViewController.m in Sources */,
 				73E868ED1942B83D004A7C62 /* TabBarViewController.m in Sources */,
 				012118A4193FE44F00CCA161 /* MercuryInstrument.m in Sources */,
 				733AC7C11944B56C00E5546C /* IPhoneFEPCriticalStatusViewController.m in Sources */,
@@ -524,6 +550,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TRIOS-MOBILE/TRIOS-MOBILE-Prefix.pch";
 				INFOPLIST_FILE = "TRIOS-MOBILE/TRIOS-MOBILE-Info.plist";
@@ -538,6 +568,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TRIOS-MOBILE/TRIOS-MOBILE-Prefix.pch";
 				INFOPLIST_FILE = "TRIOS-MOBILE/TRIOS-MOBILE-Info.plist";
