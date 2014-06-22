@@ -8,9 +8,10 @@
 
 #import "ProcedureDetailViewController.h"
 #import "MercuryFile.h"
+#import "MercuryProcedure.h"
 #import <ShinobiCharts/ShinobiChart.h>
 
-@interface ProcedureDetailViewController () <SChartDatasource, MercuryDataFileVisualizer>
+@interface ProcedureDetailViewController () <SChartDatasource, MercuryDataFileVisualizer, MercuryDataFileVisualizerEx>
 @end
 
 @implementation ProcedureDetailViewController
@@ -18,6 +19,22 @@
    ShinobiChart* _chart;
    float _data;
    float _time;
+}
+
+-(void)procedure:(MercuryGetProcedureResponse*)procedure
+          record:(MercuryDataRecord*)record
+         xSignal:(int)xSignal
+         ySignal:(int)ySignal
+     seriesIndex:(int)seriesIndex;
+{
+   _time = [record valueAtIndex:[procedure indexOfSignal:xSignal]];
+   _data = [record valueAtIndex:[procedure indexOfSignal:ySignal]];
+   
+   _chart.xAxis.title = [procedure signalToString:xSignal];
+   _chart.yAxis.title = [procedure signalToString:ySignal];
+   
+   [_chart appendNumberOfDataPoints:1 toEndOfSeriesAtIndex:0];
+   [_chart redrawChart];
 }
 
 -(void)pointData:(float)data time:(float)time

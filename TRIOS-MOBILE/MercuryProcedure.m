@@ -36,6 +36,23 @@
    return signal;
 }
 
+-(int)indexOfSignal:(int)signal
+{
+   int index = -1;
+   int signalCount = self.bytes.length  / 4;
+   
+   for (int i=0; i < signalCount; i++)
+   {
+      if (signal == [self signalAtIndex:i])
+      {
+         index = i;
+         break;
+      }
+   }
+   
+   return index;
+}
+
 -(instancetype)initWithMessage:(NSData *)message
 {
    if(self = [super initWithMessage:message])
@@ -85,6 +102,9 @@
         [NSNumber numberWithInt:IdDeltaT0CUnc] : @"IdDeltaT0CUnc",
         [NSNumber numberWithInt:IdDeltaT0C] : @"IdDeltaT0C",
         [NSNumber numberWithInt:IdSampleTC] : @"IdSampleTC",
+        
+        [NSNumber numberWithInt:IdCommonTime] : @"IdCommonTime",
+        [NSNumber numberWithInt:IdHeatFlow]:@"IdHeatFlow"
         };
    }
    return self;

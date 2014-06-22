@@ -13,6 +13,7 @@
 -(instancetype)initWithMessage:(NSData*)message;
 -(NSString*)signalToString:(int)signal;
 -(int)signalAtIndex:(int)index;
+-(int)indexOfSignal:(int)signal;
 @end
 
 @interface MercuryGetProcedureCommand : MercuryGet

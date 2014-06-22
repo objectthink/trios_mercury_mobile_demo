@@ -15,8 +15,13 @@
    MercuryGetProcedureResponse* _procedure;
    MercuryDataRecord* _dataRecord;
    int _offset;
+   int _selectedSignalIndex;
    
    NSObject<MercuryDataFileVisualizer>* _dataFileVisualizer;
+   NSObject<MercuryDataFileVisualizerEx>* _dataFileVisualizerEx;
+   
+   MercuryFile* _file;
+   MercuryDataFileReader* _reader;
 }
 @end
 
@@ -25,10 +30,12 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
    _dataFileVisualizer = [segue destinationViewController];
+   _dataFileVisualizerEx = [segue destinationViewController];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+   _selectedSignalIndex = indexPath.row;
    [self performSegueWithIdentifier:@"SignalDetail" sender:self];
 }
 
@@ -37,7 +44,7 @@
 {
    if(_procedure != nil)
    {
-      return (int) _procedure.bytes.length  / 4;
+      return (int) _procedure.bytes.length  / 4;  //bytes is signal list for now
    }
    else
       return 0;
@@ -54,7 +61,6 @@
               reuseIdentifier:@"MyIdentifier"];
    }
    
-   //cell.selectionStyle = UITableViewCellSelectionStyleNone;
    cell.textLabel.text = [_procedure signalToString:[_procedure signalAtIndex:(int)indexPath.row]];
    
    cell.detailTextLabel.text =
@@ -69,9 +75,13 @@
    
    self.doneLabel.text =
    [NSString stringWithFormat:@"finished:%lu",(unsigned long)file.data.length];
+   
+   _reader.delegate = nil;
+   
+   _file = nil;
+   _reader = nil;
 }
 
-float t = 0.0f;
 -(void)updated:(id<IMercuryFile>)file
 {
    NSLog(@"updated:%lu",(unsigned long)file.data.length);
@@ -92,7 +102,19 @@ float t = 0.0f;
       {
          _dataRecord = (MercuryDataRecord*)r;
          
-         [_dataFileVisualizer pointData:[_dataRecord valueAtIndex:9] time:t++];
+         if (_dataFileVisualizer != nil)
+         {
+//            [_dataFileVisualizer
+//             pointData:[_dataRecord valueAtIndex:[_procedure indexOfSignal:_selectedSignalIndex+1]]
+//             time:[_dataRecord valueAtIndex:[_procedure indexOfSignal:IdCommonTime]]
+//             ];
+            
+            [_dataFileVisualizerEx procedure:_procedure
+                                      record:_dataRecord
+                                     xSignal:IdCommonTime
+                                     ySignal:[_procedure signalAtIndex:_selectedSignalIndex]
+                                 seriesIndex:0];
+         }
          
          [self.SignalTableView reloadData];
       }
@@ -118,23 +140,21 @@ float t = 0.0f;
 
 - (IBAction)testTapped:(id)sender
 {
-//   MercuryReadFileCommand* command =
-//   [[MercuryReadFileCommand alloc]
-//    initWithFilename:@"Procedure.dat" offset:0 moveMethod:0 dataLengthRequested:100];
-//   
-//   [_instrument sendCommand:command];
-   
+   self.doneLabel.text = @"";
+
    _offset = 0;
    
-   MercuryFile* file =
+   //MercuryFile* file =
+   _file =
    [[MercuryFile alloc]initWithInstrument:_instrument andFilename:@"Procedure.dat"];
    
-   MercuryDataFileReader* reader =
-   [[MercuryDataFileReader alloc]initWithInstrument:_instrument file:file readSize:8192];
+   //MercuryDataFileReader* reader =
+   _reader =
+   [[MercuryDataFileReader alloc]initWithInstrument:_instrument file:_file readSize:8192];
    
-   reader.delegate = self;
+   _reader.delegate = self;
    
-   [reader start];
+   [_reader start];
 }
 
 -(void)connected

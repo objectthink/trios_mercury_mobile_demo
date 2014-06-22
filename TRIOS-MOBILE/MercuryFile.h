@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "MercuryInstrument.h"
 #import "MercuryStatus.h"
+#import "MercuryProcedure.h"
+
+@class MercuryDataRecord;
 
 enum MercuryKnownFileType
 {
@@ -19,6 +22,15 @@ enum MercuryKnownFileType
 
 @protocol MercuryDataFileVisualizer <NSObject>
 -(void)pointData:(float)data time:(float)time;
+@end
+
+@protocol MercuryDataFileVisualizerEx <NSObject>
+
+-(void)procedure:(MercuryGetProcedureResponse*)procedure
+          record:(MercuryDataRecord*)record
+         xSignal:(int)xSignal
+         ySignal:(int)ySignal
+     seriesIndex:(int)seriesIndex;
 @end
 
 @protocol IMercuryRecord
