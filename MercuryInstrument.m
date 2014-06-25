@@ -159,9 +159,10 @@ union intToFloat
    return self;
 }
 
-//TODO:add signal for testing
 -(NSMutableData*)getBytes
 {
+   [super getBytes];
+   
    [self.bytes setLength:0];
    
    [self.bytes appendBytes:&subCommandId length:4];
@@ -171,8 +172,8 @@ union intToFloat
       int i = [signal intValue];
       [self.bytes appendBytes:&i length:4];
    }
-
-   return [super getBytes];
+   
+   return self.bytes;
 }
 
 -(void)addSignal:(int)signal
@@ -189,15 +190,6 @@ union intToFloat
       subCommandId = 0x00000008;
    }
    return self;
-}
-
--(NSMutableData*)getBytes
-{
-   [self.bytes setLength:0];
-   
-   [self.bytes appendBytes:&subCommandId length:4];
-   
-   return [super getBytes];
 }
 @end
 

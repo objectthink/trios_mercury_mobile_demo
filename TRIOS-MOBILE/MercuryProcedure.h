@@ -22,6 +22,17 @@
 @interface MercurySetProcedureCommand : MercuryAction
 @end
 
+@interface MercurySegment : MercuryInstrumentItem
+{
+   uint segmentTag;
+   int  segmentId;
+}
+-(NSMutableData*)getBytes;
+@end
+
+@interface SegmentIsothermal : MercurySegment
+@end
+
 enum DSCSignalIds
 {
    IdInvalid = 0,

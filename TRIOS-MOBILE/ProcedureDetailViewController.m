@@ -46,12 +46,12 @@
    [_chart redrawChart];
 }
 
-- (int)numberOfSeriesInSChart:(ShinobiChart *)chart
+- (NSInteger)numberOfSeriesInSChart:(ShinobiChart *)chart
 {
    return 1;
 }
 
--(SChartSeries *)sChart:(ShinobiChart *)chart seriesAtIndex:(int)index {
+-(SChartSeries *)sChart:(ShinobiChart *)chart seriesAtIndex:(NSInteger)index {
    
    SChartLineSeries *lineSeries = [[SChartLineSeries alloc] init];
    
@@ -60,12 +60,13 @@
    return lineSeries;
 }
 
-- (int)sChart:(ShinobiChart *)chart numberOfDataPointsForSeriesAtIndex:(int)seriesIndex
+- (NSInteger)sChart:(ShinobiChart *)chart numberOfDataPointsForSeriesAtIndex:(NSInteger)seriesIndex
 {
    return 0;
 }
 
-- (id<SChartData>)sChart:(ShinobiChart *)chart dataPointAtIndex:(int)dataIndex forSeriesAtIndex:(int)seriesIndex {
+- (id<SChartData>)sChart:(ShinobiChart *)chart dataPointAtIndex:(NSInteger)dataIndex forSeriesAtIndex:(NSInteger)seriesIndex
+{
    
    SChartDataPoint *datapoint = [[SChartDataPoint alloc] init];
    

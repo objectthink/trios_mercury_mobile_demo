@@ -33,8 +33,6 @@ MercuryCommandId;
 -(uint)uintAtOffset:(NSUInteger)offset inData:(NSData*)data;
 
 -(id)initWithMessage:(NSData*)message;
-
--(NSMutableData*)getBytes;
 @end
 
 @interface MercuryCommand : MercuryInstrumentItem
@@ -59,7 +57,6 @@ MercuryCommandId;
 @interface MercuryResponse : MercuryInstrumentItem
 {
 }
-
 @property (strong, nonatomic) NSMutableData* bytes;
 @end
 

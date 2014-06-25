@@ -35,7 +35,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-   _selectedSignalIndex = indexPath.row;
+   _selectedSignalIndex = (int)indexPath.row;
    [self performSegueWithIdentifier:@"SignalDetail" sender:self];
 }
 

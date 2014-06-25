@@ -8,6 +8,54 @@
 
 #import "MercuryProcedure.h"
 
+static int uniqueTagStatic = 0;
+@implementation MercurySegment
+{
+}
+
+-(instancetype)init
+{
+   if(self = [super init])
+   {
+      segmentTag  = 0x544D4753;  //SGMT
+   }
+   return self;
+}
+
+-(NSMutableData*)getBytes
+{
+   uniqueTagStatic++;
+   
+   [self.bytes setLength:0];
+   
+   [self.bytes appendBytes:&segmentTag length:4];
+   [self.bytes appendBytes:&segmentId length:4];
+   [self.bytes appendBytes:&uniqueTagStatic length:4];
+   
+   return self.bytes;
+}
+@end
+
+@implementation SegmentIsothermal
+{
+}
+
+-(instancetype)init
+{
+   if(self = [super init])
+   {
+      segmentId  = 0x01030000;
+   }
+   
+   return self;
+}
+
+-(NSMutableData*)getBytes
+{
+   return [super getBytes];
+}
+
+@end
 
 @implementation MercuryGetProcedureResponse
 {
@@ -39,7 +87,7 @@
 -(int)indexOfSignal:(int)signal
 {
    int index = -1;
-   int signalCount = self.bytes.length  / 4;
+   int signalCount = (int)self.bytes.length  / 4;
    
    for (int i=0; i < signalCount; i++)
    {
