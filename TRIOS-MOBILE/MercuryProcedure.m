@@ -6,6 +6,7 @@
 //
 //
 
+#import "MercuryInstrument.h"
 #import "MercuryProcedure.h"
 
 static int uniqueTagStatic = 0;
@@ -38,13 +39,15 @@ static int uniqueTagStatic = 0;
 
 @implementation SegmentIsothermal
 {
+   float _timeInMinutes;
 }
 
--(instancetype)init
+-(instancetype)initWithTime:(float)timeInMinutes
 {
    if(self = [super init])
    {
       segmentId  = 0x01030000;
+      _timeInMinutes = timeInMinutes;
    }
    
    return self;
@@ -52,9 +55,68 @@ static int uniqueTagStatic = 0;
 
 -(NSMutableData*)getBytes
 {
-   return [super getBytes];
+   [super getBytes];
+   
+   [self.bytes appendBytes:&_timeInMinutes length:4];
+   
+   return self.bytes;
+}
+@end
+
+@implementation SegmentEquilibrate
+{
+   float _equilibrateTemperature;
 }
 
+-(instancetype)initWithTemperature:(float)equilibrateTemperature
+{
+   if(self = [super init])
+   {
+      segmentId  = 0x01030001;
+      _equilibrateTemperature = equilibrateTemperature;
+   }
+   
+   return self;
+}
+
+-(NSMutableData*)getBytes
+{
+   [super getBytes];
+   
+   [self.bytes appendBytes:&_equilibrateTemperature length:4];
+   
+   return self.bytes;
+}
+@end
+
+@implementation SegmentRamp
+{
+   float _degreesPerMinute;
+   float _finalTemperature;
+}
+
+-(instancetype)initWithDegreesPerMinute:(float)degreesPerMinute
+                        finalTemerature:(float)finalTemperature
+{
+   if(self = [super init])
+   {
+      segmentId  = 0x01030002;
+      _degreesPerMinute = degreesPerMinute;
+      _finalTemperature = finalTemperature;
+   }
+   
+   return self;
+}
+
+-(NSMutableData*)getBytes
+{
+   [super getBytes];
+   
+   [self.bytes appendBytes:&_degreesPerMinute length:4];
+   [self.bytes appendBytes:&_finalTemperature length:4];
+   
+   return self.bytes;
+}
 @end
 
 @implementation MercuryGetProcedureResponse
@@ -163,4 +225,60 @@ static int uniqueTagStatic = 0;
 @end
 
 @implementation MercurySetProcedureCommand
+-(id)init
+{
+   if(self = [super init])
+   {
+      subCommandId = MercurySetProcedureCommandId;
+   }
+   return self;
+}
+
+-(NSMutableData*)getBytes
+{
+   [super getBytes];
+   
+   char zero = 0;
+   
+   uint setupSectionLength = 68;
+   [self.bytes appendBytes:&setupSectionLength length:4];
+
+   CFUUIDRef guid = CFUUIDCreate(NULL);
+   CFUUIDBytes guidBytes = CFUUIDGetUUIDBytes(guid);
+   
+   [self.bytes appendBytes:&guidBytes length:16];
+   
+   for (int i = 0; i < 68 - 16; i++)
+      [self.bytes appendBytes:&zero length:1];
+   
+   uint signalSectionLength = 8;
+   [self.bytes appendBytes:&signalSectionLength length:4];
+   
+   uint aSignal = 9;
+   [self.bytes appendBytes:&aSignal length:4];
+   
+   aSignal = IdCommonTime;
+   [self.bytes appendBytes:&aSignal length:4];
+
+   uint segmentSectionLength = 52;
+   [self.bytes appendBytes:&segmentSectionLength length:4];
+
+   MercurySegment* segment =
+   [[SegmentEquilibrate alloc] initWithTemperature:40.0];
+
+   [self.bytes appendData:[segment getBytes]];
+
+   segment =
+   [[SegmentIsothermal alloc] initWithTime:2.0];
+   
+   [self.bytes appendData:[segment getBytes]];
+
+   segment =
+   [[SegmentRamp alloc] initWithDegreesPerMinute:20 finalTemerature:50];
+   
+   [self.bytes appendData:[segment getBytes]];
+
+   return self.bytes;
+}
 @end
+

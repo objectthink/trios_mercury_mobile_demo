@@ -31,8 +31,17 @@
 @end
 
 @interface SegmentIsothermal : MercurySegment
+-(instancetype)initWithTime:(float)timeInMinutes;
 @end
 
+@interface SegmentEquilibrate : MercurySegment
+-(instancetype)initWithTemperature:(float)equilibrateTemperature;
+@end
+
+@interface SegmentRamp : MercurySegment
+-(instancetype)initWithDegreesPerMinute:(float)degreesPerMinute
+                        finalTemerature:(float)finalTemperature;
+@end
 enum DSCSignalIds
 {
    IdInvalid = 0,

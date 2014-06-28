@@ -19,6 +19,7 @@ typedef enum
 {
    MercuryReadFileCommandId = 0x00000007,
    MercuryStartProcedureCommandId = 0x00010006,
+   MercurySetProcedureCommandId = 0x01010000,
    MercuryGetProcedureStatusCommandId = 0x00000009,
    MercuryGetDataFileStatusCommandId = 0x00000006
 }
@@ -40,6 +41,7 @@ MercuryCommandId;
    uint subCommandId;
 }
 -(id)init;
+-(NSMutableData*)getBytes;
 @end
 
 @interface MercuryStatus : MercuryInstrumentItem

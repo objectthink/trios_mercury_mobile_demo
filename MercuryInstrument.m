@@ -18,6 +18,15 @@ union intToFloat
 {
 }
 
+-(id)init
+{
+   if(self = [super init])
+   {
+      self.bytes = [[NSMutableData alloc] init];
+   }
+   return self;
+}
+
 -(id)initWithMessage:(NSData*)message
 {
    if(self = [super init])
@@ -85,7 +94,7 @@ union intToFloat
 {
    if(self = [super init])
    {
-      self.bytes = [[NSMutableData alloc] init];
+      //self.bytes = [[NSMutableData alloc] init];
    }
    return self;
 }

@@ -132,6 +132,12 @@
 
 - (IBAction)startProcedureTapped:(UIButton *)sender
 {
+   //create and send procedure
+   MercurySetProcedureCommand* setCommand =
+   [[MercurySetProcedureCommand alloc] init];
+   
+   [_instrument sendCommand:setCommand];
+   
    MercuryStartProcedureCommand* command =
    [[MercuryStartProcedureCommand alloc]init];
    
