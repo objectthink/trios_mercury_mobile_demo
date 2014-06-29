@@ -35,6 +35,7 @@
 		01BAB4D7195FBF1E00BDEA2A /* CreateProcedureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BAB4D6195FBF1E00BDEA2A /* CreateProcedureViewController.m */; };
 		01BAB4DA195FC24E00BDEA2A /* FlowManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BAB4D8195FC24E00BDEA2A /* FlowManager.m */; };
 		01C4D2591953C1E500AA5523 /* ProcedureViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01C4D2581953C1E500AA5523 /* ProcedureViewTableViewCell.m */; };
+		7329949019609A1D004C820D /* SegmentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7329948F19609A1D004C820D /* SegmentsTableViewController.m */; };
 		733AC7BE19449FA500E5546C /* IPhoneMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 733AC7BD19449FA500E5546C /* IPhoneMainViewController.m */; };
 		733AC7C11944B56C00E5546C /* IPhoneFEPCriticalStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 733AC7C01944B56C00E5546C /* IPhoneFEPCriticalStatusViewController.m */; };
 		73A623721955F087006AB95F /* ProcedureDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A623711955F087006AB95F /* ProcedureDetailViewController.m */; };
@@ -103,6 +104,8 @@
 		01C4D2571953C1E500AA5523 /* ProcedureViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcedureViewTableViewCell.h; sourceTree = "<group>"; };
 		01C4D2581953C1E500AA5523 /* ProcedureViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureViewTableViewCell.m; sourceTree = "<group>"; };
 		1502EDB792854FBC99680EFA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		7329948E19609A1D004C820D /* SegmentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentsTableViewController.h; sourceTree = "<group>"; };
+		7329948F19609A1D004C820D /* SegmentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SegmentsTableViewController.m; sourceTree = "<group>"; };
 		733AC7BC19449FA500E5546C /* IPhoneMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPhoneMainViewController.h; sourceTree = "<group>"; };
 		733AC7BD19449FA500E5546C /* IPhoneMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPhoneMainViewController.m; sourceTree = "<group>"; };
 		733AC7BF1944B56C00E5546C /* IPhoneFEPCriticalStatusViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPhoneFEPCriticalStatusViewController.h; sourceTree = "<group>"; };
@@ -245,6 +248,8 @@
 				018484F1193F284A00D5820B /* FirstViewController.m */,
 				018484F3193F284A00D5820B /* SecondViewController.h */,
 				018484F4193F284A00D5820B /* SecondViewController.m */,
+				7329948E19609A1D004C820D /* SegmentsTableViewController.h */,
+				7329948F19609A1D004C820D /* SegmentsTableViewController.m */,
 				018484F6193F284A00D5820B /* Images.xcassets */,
 				018484DF193F284A00D5820B /* Supporting Files */,
 			);
@@ -421,6 +426,7 @@
 				018484F5193F284A00D5820B /* SecondViewController.m in Sources */,
 				01C4D2591953C1E500AA5523 /* ProcedureViewTableViewCell.m in Sources */,
 				018484E9193F284A00D5820B /* AppDelegate.m in Sources */,
+				7329949019609A1D004C820D /* SegmentsTableViewController.m in Sources */,
 				73A9E91319510E8A003150E1 /* MercuryProcedure.m in Sources */,
 				73A623721955F087006AB95F /* ProcedureDetailViewController.m in Sources */,
 				73E868ED1942B83D004A7C62 /* TabBarViewController.m in Sources */,
@@ -577,6 +583,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TRIOS-MOBILE/TRIOS-MOBILE-Prefix.pch";
 				INFOPLIST_FILE = "TRIOS-MOBILE/TRIOS-MOBILE-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -595,6 +602,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TRIOS-MOBILE/TRIOS-MOBILE-Prefix.pch";
 				INFOPLIST_FILE = "TRIOS-MOBILE/TRIOS-MOBILE-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

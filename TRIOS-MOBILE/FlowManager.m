@@ -8,9 +8,26 @@
 
 #import "FlowManager.h"
 
-@interface FlowManager () {
+@implementation UIView (OPCloning)
+
+- (id) clone
+{
+   NSData *archivedViewData = [NSKeyedArchiver archivedDataWithRootObject: self];
+   
+   id clone = [NSKeyedUnarchiver unarchiveObjectWithData:archivedViewData];
+
+   return clone;
+}
+
+@end
+
+@interface FlowManager ()
+{
    NSMutableArray *flowLayouts;
    UIView *viewInProgress;
+   
+   SEssentialsFlowLayout* _fromLayout;
+   SEssentialsFlowLayout* _toLayoutl;
 }
 @end
 
@@ -22,12 +39,20 @@
    if (self)
    {
       flowLayouts = [NSMutableArray new];
-      for (int i = 0; i < 3; i++)
+      
+      bool first = YES;
+      for (int i = 0; i < 2; i++)
       {
          CGSize flowSize = CGSizeMake(frame.size.width/3, frame.size.height);
          CGRect flowFrame = CGRectMake(i*flowSize.width, 100, flowSize.width, flowSize.height);
-         [self createFlowWithFrame:flowFrame];
+         
+         if(first == YES)
+            [self createFromFlowWithFrame:flowFrame];
+         else
+            [self createFlowWithFrame:flowFrame];
       }
+      
+      
    }
    return self;
 }
@@ -35,16 +60,35 @@
 -(void)createFlowWithFrame:(CGRect)frame
 {
    SEssentialsFlowLayout *flow = [[SEssentialsFlowLayout alloc] initWithFrame:frame];
+   
    flow.flowDelegate = self;
+   
    flow.dragsOutsideBounds = YES;
    flow.clipsToBounds = NO;
+   
    [flowLayouts addObject:flow];
+   
+   [self addSubview:flow];
+}
+
+-(void)createFromFlowWithFrame:(CGRect)frame
+{
+   SEssentialsFlowLayout *flow = [[SEssentialsFlowLayout alloc] initWithFrame:frame];
+   
+   flow.flowDelegate = self;
+   
+   flow.dragsOutsideBounds = YES;
+   flow.clipsToBounds = NO;
+   
+   [flowLayouts addObject:flow];
+   
    [self addSubview:flow];
 }
 
 -(void)addSubview:(UIView*)subview toFlowAtIndex:(int)index
 {
    SEssentialsFlowLayout *flow = [flowLayouts objectAtIndex:index];
+   
    [flow addManagedSubview:subview];
 }
 
@@ -77,6 +121,7 @@
 -(void)flowLayout:(SEssentialsFlowLayout *)sourceFlow didDragView:(UIView *)view
 {
    CGPoint dragPosition = [sourceFlow convertPoint:view.center toView:self];
+   
    for (SEssentialsFlowLayout *destinationFlow in flowLayouts)
    {
       if (destinationFlow != sourceFlow)
@@ -87,8 +132,8 @@
             view.center = [self convertPoint:dragPosition toView:destinationFlow];
             
             //Swap owners
-            [destinationFlow addManagedSubview:view];
-            [sourceFlow unmanageSubview:view];
+            [destinationFlow addManagedSubview:[view clone]];
+            //[sourceFlow unmanageSubview:view];
          }
       }
    }

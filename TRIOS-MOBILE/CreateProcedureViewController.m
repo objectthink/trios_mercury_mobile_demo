@@ -8,6 +8,9 @@
 
 #import "CreateProcedureViewController.h"
 #import "FlowManager.h"
+#import "AppDelegate.h"
+#import "MercuryProcedure.h"
+#import "SegmentsTableViewController.h"
 
 @interface CreateProcedureViewController ()
 
@@ -20,7 +23,6 @@
    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
    if (self)
    {
-      // Custom initialization
    }
    return self;
 }
@@ -28,20 +30,28 @@
 - (void)viewDidLoad
 {
    [super viewDidLoad];
-   // Do any additional setup after loading the view.
    
-   FlowManager* flowManager =
-   [[FlowManager alloc] initWithFrame:self.view.frame];
+   UIBarButtonItem *doneItem =
+   [[UIBarButtonItem alloc]
+    initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+    target:self
+    action:@selector(doneItemTapped)];
    
-   [self.view addSubview:flowManager];
+   NSArray *actionButtonItems = @[doneItem];
    
-   for (int i=0; i<3; i++)
+   self.navigationItem.rightBarButtonItems = actionButtonItems;
+}
+
+-(void)doneItemTapped
+{
+   NSLog(@"DONE TAPPED!");
+   
+   SegmentsTableViewController* c =
+   [self.viewControllers objectAtIndex:1];
+   
+   for (MercurySegment* segment in c.segments)
    {
-      UIView* view =
-      [[UIView alloc] initWithFrame:CGRectMake(0,0, 200, 50)];
-      
-      [view setBackgroundColor:[UIColor blueColor]];
-      [flowManager addSubview:view toFlowAtIndex:0];
+      NSLog(@"%@", segment);
    }
 }
 

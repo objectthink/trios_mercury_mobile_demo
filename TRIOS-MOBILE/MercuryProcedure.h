@@ -269,6 +269,7 @@ typedef enum DSCSignalIds
    uint segmentTag;
    int  segmentId;
 }
+-(NSString*)name;
 -(NSMutableData*)getBytes;
 @end
 

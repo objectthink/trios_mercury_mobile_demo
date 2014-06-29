@@ -133,7 +133,6 @@
 - (void)viewDidLoad
 {
    [super viewDidLoad];
-   // Do any additional setup after loading the view.
    
    AppDelegate* app = [[UIApplication sharedApplication] delegate];
    
@@ -141,6 +140,8 @@
    _instrument.instrumentDelegate = self;
    
    access = Viewer;
+   
+   self.ipAddressText.text = @"10.52.53.8";
    
    self.title = @"Main";
 }

@@ -35,6 +35,11 @@ static int uniqueTagStatic = 0;
    
    return self.bytes;
 }
+
+-(NSString*)name
+{
+   return @"MercurySegment";
+}
 @end
 
 @implementation SegmentIsothermal
@@ -61,6 +66,18 @@ static int uniqueTagStatic = 0;
    
    return self.bytes;
 }
+
+-(NSString*)name
+{
+   return @"Isothermal";
+}
+
+- (NSString *)description
+{
+   return
+   [NSString stringWithFormat:@"TimeInMinutes:%f", _timeInMinutes];
+}
+
 @end
 
 @implementation SegmentEquilibrate
@@ -77,6 +94,17 @@ static int uniqueTagStatic = 0;
    }
    
    return self;
+}
+
+-(NSString*)name
+{
+   return @"Equilibrate";
+}
+
+- (NSString *)description
+{
+   return
+   [NSString stringWithFormat:@"Equilibrate Temperature:%f", _equilibrateTemperature];
 }
 
 -(NSMutableData*)getBytes
@@ -106,6 +134,17 @@ static int uniqueTagStatic = 0;
    }
    
    return self;
+}
+
+-(NSString*)name
+{
+   return @"Ramp";
+}
+
+- (NSString *)description
+{
+   return
+   [NSString stringWithFormat:@"DegreesPerMinute:%f FinalTemperature:%f", _degreesPerMinute, _finalTemperature];
 }
 
 -(NSMutableData*)getBytes

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <SNFSegmentedViewController.h>
 
-@interface CreateProcedureViewController : UIViewController
+@interface CreateProcedureViewController : SNFSegmentedViewController
 
 @end
