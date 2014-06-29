@@ -65,8 +65,8 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MSS-de-4mZ">
-                                <rect key="frame" x="20" y="277" width="37" height="30"/>
-                                <state key="normal" title="TEST">
+                                <rect key="frame" x="13" y="308" width="169" height="30"/>
+                                <state key="normal" title="View Running Procedure">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -74,8 +74,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yoQ-Is-okb">
-                                <rect key="frame" x="20" y="233" width="108" height="30"/>
-                                <state key="normal" title="Start Procedure">
+                                <rect key="frame" x="13" y="270" width="164" height="30"/>
+                                <state key="normal" title="Start Current Procedure">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -83,13 +83,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ErX-KR-jVB">
-                                <rect key="frame" x="20" y="315" width="162" height="21"/>
+                                <rect key="frame" x="13" y="375" width="162" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ox6-mq-vbz">
-                                <rect key="frame" x="20" y="344" width="162" height="21"/>
+                                <rect key="frame" x="13" y="346" width="162" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -155,6 +155,16 @@
                                     <outlet property="delegate" destination="vJr-M7-mRC" id="ygF-yu-vvl"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f0C-dt-n5z">
+                                <rect key="frame" x="13" y="232" width="121" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Create Procedure">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="createProcedureTapped:" destination="vJr-M7-mRC" eventType="touchUpInside" id="FJO-uk-W2B"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -165,6 +175,7 @@
                         <outlet property="SignalTableView" destination="gCN-9d-1Hi" id="DfB-J7-w7D"/>
                         <outlet property="dataLabel" destination="ErX-KR-jVB" id="HDO-HM-Djd"/>
                         <outlet property="doneLabel" destination="Ox6-mq-vbz" id="g7R-c9-Y9n"/>
+                        <segue destination="icf-GG-wSX" kind="push" identifier="CreateProcedureSegue" id="MTj-gf-egd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b8u-cn-nfN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -188,7 +199,25 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SyA-EE-ImO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4842" y="2514"/>
+            <point key="canvasLocation" x="5057" y="2248"/>
+        </scene>
+        <!--Create Procedure View Controller-->
+        <scene sceneID="qbR-Ve-axg">
+            <objects>
+                <viewController id="icf-GG-wSX" customClass="CreateProcedureViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uPH-yW-ep7"/>
+                        <viewControllerLayoutGuide type="bottom" id="fw8-yA-rx5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Mh9-gd-0eg">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nzd-eH-ucZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5057" y="3394"/>
         </scene>
         <!--Real Time Signals View Controller - Real Time Signals-->
         <scene sceneID="wg7-f3-ORb">

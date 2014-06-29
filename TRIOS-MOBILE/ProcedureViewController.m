@@ -130,7 +130,7 @@
    }
 }
 
-- (IBAction)startProcedureTapped:(UIButton *)sender
+-(void)test
 {
    //create and send procedure
    MercurySetProcedureCommand* setCommand =
@@ -146,6 +146,19 @@
    
    [_instrument sendCommand:setCommand];
    
+   MercuryStartProcedureCommand* command =
+   [[MercuryStartProcedureCommand alloc]init];
+   
+   [_instrument sendCommand:command];
+}
+
+- (IBAction)createProcedureTapped:(UIButton *)sender
+{
+   [self performSegueWithIdentifier:@"CreateProcedureSegue" sender:self];
+}
+
+- (IBAction)startProcedureTapped:(UIButton *)sender
+{
    MercuryStartProcedureCommand* command =
    [[MercuryStartProcedureCommand alloc]init];
    

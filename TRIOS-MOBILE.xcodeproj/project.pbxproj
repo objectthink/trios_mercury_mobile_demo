@@ -30,6 +30,10 @@
 		01848508193F284A00D5820B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 01848506193F284A00D5820B /* InfoPlist.strings */; };
 		0184850A193F284A00D5820B /* TRIOS_MOBILETests.m in Sources */ = {isa = PBXBuildFile; fileRef = 01848509193F284A00D5820B /* TRIOS_MOBILETests.m */; };
 		01848515193F2A4500D5820B /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01848514193F2A4500D5820B /* MainViewController.m */; };
+		01BAB4D2195FBDF600BDEA2A /* ShinobiEssentials.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01BAB4D1195FBDF600BDEA2A /* ShinobiEssentials.framework */; };
+		01BAB4D4195FBE0A00BDEA2A /* ShinobiEssentials.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 01BAB4D3195FBE0A00BDEA2A /* ShinobiEssentials.bundle */; };
+		01BAB4D7195FBF1E00BDEA2A /* CreateProcedureViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BAB4D6195FBF1E00BDEA2A /* CreateProcedureViewController.m */; };
+		01BAB4DA195FC24E00BDEA2A /* FlowManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 01BAB4D8195FC24E00BDEA2A /* FlowManager.m */; };
 		01C4D2591953C1E500AA5523 /* ProcedureViewTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 01C4D2581953C1E500AA5523 /* ProcedureViewTableViewCell.m */; };
 		733AC7BE19449FA500E5546C /* IPhoneMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 733AC7BD19449FA500E5546C /* IPhoneMainViewController.m */; };
 		733AC7C11944B56C00E5546C /* IPhoneFEPCriticalStatusViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 733AC7C01944B56C00E5546C /* IPhoneFEPCriticalStatusViewController.m */; };
@@ -90,6 +94,12 @@
 		01848509193F284A00D5820B /* TRIOS_MOBILETests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TRIOS_MOBILETests.m; sourceTree = "<group>"; };
 		01848513193F2A4500D5820B /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		01848514193F2A4500D5820B /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		01BAB4D1195FBDF600BDEA2A /* ShinobiEssentials.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ShinobiEssentials.framework; path = Library/Frameworks/ShinobiEssentials.framework; sourceTree = DEVELOPER_DIR; };
+		01BAB4D3195FBE0A00BDEA2A /* ShinobiEssentials.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ShinobiEssentials.bundle; sourceTree = "<group>"; };
+		01BAB4D5195FBF1E00BDEA2A /* CreateProcedureViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateProcedureViewController.h; sourceTree = "<group>"; };
+		01BAB4D6195FBF1E00BDEA2A /* CreateProcedureViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateProcedureViewController.m; sourceTree = "<group>"; };
+		01BAB4D8195FC24E00BDEA2A /* FlowManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlowManager.m; sourceTree = "<group>"; };
+		01BAB4D9195FC24E00BDEA2A /* FlowManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowManager.h; sourceTree = "<group>"; };
 		01C4D2571953C1E500AA5523 /* ProcedureViewTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProcedureViewTableViewCell.h; sourceTree = "<group>"; };
 		01C4D2581953C1E500AA5523 /* ProcedureViewTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProcedureViewTableViewCell.m; sourceTree = "<group>"; };
 		1502EDB792854FBC99680EFA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
@@ -120,6 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01BAB4D2195FBDF600BDEA2A /* ShinobiEssentials.framework in Frameworks */,
 				73A6237C1955F285006AB95F /* libstdc++.dylib in Frameworks */,
 				73A6237A1955F26C006AB95F /* OpenGLES.framework in Frameworks */,
 				73A623781955F253006AB95F /* QuartzCore.framework in Frameworks */,
@@ -148,6 +159,7 @@
 		012118A5193FF66400CCA161 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				01BAB4D3195FBE0A00BDEA2A /* ShinobiEssentials.bundle */,
 				012118AA1942890A00CCA161 /* play.png */,
 				012118A81942880000CCA161 /* thumbnails-2.png */,
 				012118A6193FF67C00CCA161 /* logo.gif */,
@@ -178,6 +190,7 @@
 		018484D7193F284A00D5820B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				01BAB4D1195FBDF600BDEA2A /* ShinobiEssentials.framework */,
 				73A6237B1955F285006AB95F /* libstdc++.dylib */,
 				73A623791955F26C006AB95F /* OpenGLES.framework */,
 				73A623771955F253006AB95F /* QuartzCore.framework */,
@@ -198,6 +211,8 @@
 				012118A5193FF66400CCA161 /* Resources */,
 				012118A2193FE44F00CCA161 /* MercuryInstrument.h */,
 				012118A3193FE44F00CCA161 /* MercuryInstrument.m */,
+				01BAB4D8195FC24E00BDEA2A /* FlowManager.m */,
+				01BAB4D9195FC24E00BDEA2A /* FlowManager.h */,
 				73A9E91119510E8A003150E1 /* MercuryProcedure.h */,
 				73A9E91219510E8A003150E1 /* MercuryProcedure.m */,
 				73AC8597194D133E00141413 /* MercuryStatus.h */,
@@ -214,6 +229,8 @@
 				733AC7C01944B56C00E5546C /* IPhoneFEPCriticalStatusViewController.m */,
 				018484EA193F284A00D5820B /* Main_iPhone.storyboard */,
 				018484ED193F284A00D5820B /* Main_iPad.storyboard */,
+				01BAB4D5195FBF1E00BDEA2A /* CreateProcedureViewController.h */,
+				01BAB4D6195FBF1E00BDEA2A /* CreateProcedureViewController.m */,
 				73A623701955F087006AB95F /* ProcedureDetailViewController.h */,
 				73A623711955F087006AB95F /* ProcedureDetailViewController.m */,
 				01C4D2571953C1E500AA5523 /* ProcedureViewTableViewCell.h */,
@@ -348,6 +365,7 @@
 				018484EC193F284A00D5820B /* Main_iPhone.storyboard in Resources */,
 				018484E3193F284A00D5820B /* InfoPlist.strings in Resources */,
 				012118A91942880000CCA161 /* thumbnails-2.png in Resources */,
+				01BAB4D4195FBE0A00BDEA2A /* ShinobiEssentials.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,6 +424,7 @@
 				73A9E91319510E8A003150E1 /* MercuryProcedure.m in Sources */,
 				73A623721955F087006AB95F /* ProcedureDetailViewController.m in Sources */,
 				73E868ED1942B83D004A7C62 /* TabBarViewController.m in Sources */,
+				01BAB4DA195FC24E00BDEA2A /* FlowManager.m in Sources */,
 				012118A4193FE44F00CCA161 /* MercuryInstrument.m in Sources */,
 				733AC7C11944B56C00E5546C /* IPhoneFEPCriticalStatusViewController.m in Sources */,
 				73AC8599194D133E00141413 /* MercuryStatus.m in Sources */,
@@ -413,6 +432,7 @@
 				733AC7BE19449FA500E5546C /* IPhoneMainViewController.m in Sources */,
 				01512C0D194BBC6C00F69E82 /* MercuryFile.m in Sources */,
 				73E868F019432F3C004A7C62 /* RealTimeSignalsViewController.m in Sources */,
+				01BAB4D7195FBF1E00BDEA2A /* CreateProcedureViewController.m in Sources */,
 				01848515193F2A4500D5820B /* MainViewController.m in Sources */,
 				018484E5193F284A00D5820B /* main.m in Sources */,
 			);
