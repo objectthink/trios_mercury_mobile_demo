@@ -112,8 +112,8 @@ static int uniqueTagStatic = 0;
 {
    [super getBytes];
    
-   [self.bytes appendBytes:&_degreesPerMinute length:4];
    [self.bytes appendBytes:&_finalTemperature length:4];
+   [self.bytes appendBytes:&_degreesPerMinute length:4];
    
    return self.bytes;
 }
@@ -161,6 +161,45 @@ static int uniqueTagStatic = 0;
    }
    
    return index;
+}
+
+-(instancetype)init
+{
+   if(self = [super init])
+   {
+      _signalToString =
+      @{
+        [NSNumber numberWithInt:IdHeaterADC] : @"IdHeaterADC",
+        [NSNumber numberWithInt:IdHeaterMV] : @"IdHeaterMV",
+        [NSNumber numberWithInt:IdHeaterC] : @"IdHeaterC",
+        [NSNumber numberWithInt:IdFlangeADC] : @"IdFlangeADC",
+        [NSNumber numberWithInt:IdFlangeMV] : @"IdFlangeMV",
+        [NSNumber numberWithInt:IdFlangeC] : @"IdFlangeC",
+        [NSNumber numberWithInt:IdT0UncorrectedADC] : @"IdT0UncorrectedADC",
+        [NSNumber numberWithInt:IdT0UncorrectedMV] : @"IdT0UncorrectedMV",
+        [NSNumber numberWithInt:IdT0C] : @"IdT0C",
+        [NSNumber numberWithInt:IdT0UncorrectedC] : @"IdT0UncorrectedC",
+        [NSNumber numberWithInt:IdRefJunctionADC] : @"IdRefJunctionADC",
+        [NSNumber numberWithInt:IdDeltaT0ADC] : @"IdDeltaT0ADC",
+        [NSNumber numberWithInt:IdDeltaT0MV] : @"IdDeltaT0MV",
+        [NSNumber numberWithInt:IdDeltaT0UVUnc] : @"IdDeltaT0UVUnc",
+        [NSNumber numberWithInt:IdRefJunctionMV] : @"IdRefJunctionMV",
+        [NSNumber numberWithInt:IdRefJunctionC] : @"IdRefJunctionC",
+        [NSNumber numberWithInt:IdDeltaLidADC] : @"IdDeltaLidADC",
+        [NSNumber numberWithInt:IdDeltaLidMV] : @"IdDeltaLidMV",
+        [NSNumber numberWithInt:IdDeltaLidUV] : @"IdDeltaLidUV",
+        [NSNumber numberWithInt:IdDTAmpTempADC] : @"IdDTAmpTempADC",
+        [NSNumber numberWithInt:IdDTAmpTempMV] : @"IdDTAmpTempMV",
+        [NSNumber numberWithInt:IdDTAmpTempC] : @"IdDTAmpTempC",
+        [NSNumber numberWithInt:IdDeltaT0CUnc] : @"IdDeltaT0CUnc",
+        [NSNumber numberWithInt:IdDeltaT0C] : @"IdDeltaT0C",
+        [NSNumber numberWithInt:IdSampleTC] : @"IdSampleTC",
+        
+        [NSNumber numberWithInt:IdCommonTime] : @"IdCommonTime",
+        [NSNumber numberWithInt:IdHeatFlow]:@"IdHeatFlow"
+        };
+   }
+   return self;
 }
 
 -(instancetype)initWithMessage:(NSData *)message
@@ -225,16 +264,77 @@ static int uniqueTagStatic = 0;
 @end
 
 @implementation MercurySetProcedureCommand
+{
+   NSMutableArray* _segments;
+   NSMutableArray* _signals;
+}
 -(id)init
 {
    if(self = [super init])
    {
       subCommandId = MercurySetProcedureCommandId;
+      _segments = [[NSMutableArray alloc]init];
+      _signals  = [[NSMutableArray alloc] init];
    }
    return self;
 }
 
+-(void)addSegment:(MercurySegment *)segment
+{
+   [_segments addObject:segment];
+}
+
+-(void)addSignal:(DSCSignalId)signal
+{
+   [_signals addObject:[NSNumber numberWithInt:signal]];
+}
+
 -(NSMutableData*)getBytes
+{
+   //base class adds the command id
+   [super getBytes];
+   
+   /////////////////setup section
+   char zero = 0;
+   
+   uint setupSectionLength = 68;
+   [self.bytes appendBytes:&setupSectionLength length:4];
+   
+   CFUUIDRef guid = CFUUIDCreate(NULL);
+   CFUUIDBytes guidBytes = CFUUIDGetUUIDBytes(guid);
+   
+   [self.bytes appendBytes:&guidBytes length:16];
+   
+   for (int i = 0; i < 68 - 16; i++)
+      [self.bytes appendBytes:&zero length:1];
+   
+   /////////////////signal section
+   uint signalSectionLength = [_signals count] * 4;
+   [self.bytes appendBytes:&signalSectionLength length:4];
+   
+   for (NSNumber* n in _signals)
+   {
+      int signal = [n intValue];
+      [self.bytes appendBytes:&signal length:4];
+   }
+   /////////////////segment section
+   int segmentSectionLength = 0;
+   for (MercurySegment* segment in _segments)
+   {
+      segmentSectionLength += [[segment getBytes] length];
+   }
+   
+   [self.bytes appendBytes:&segmentSectionLength length:4];
+   
+   for (MercurySegment* segment in _segments)
+   {
+      [self.bytes appendData:[segment getBytes]];
+   }
+   
+   return self.bytes;
+}
+
+-(NSMutableData*)getBytesTEST
 {
    [super getBytes];
    

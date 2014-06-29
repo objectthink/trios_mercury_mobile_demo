@@ -136,6 +136,14 @@
    MercurySetProcedureCommand* setCommand =
    [[MercurySetProcedureCommand alloc] init];
    
+   [setCommand addSegment:[[SegmentEquilibrate alloc] initWithTemperature:40.0]];
+   [setCommand addSegment:[[SegmentIsothermal alloc]initWithTime:0.3]];
+   [setCommand addSegment:[[SegmentRamp alloc] initWithDegreesPerMinute:20 finalTemerature:60]];
+   
+   [setCommand addSignal:IdT0C];
+   [setCommand addSignal:IdCommonTime];
+   [setCommand addSignal:IdHeatFlow];
+   
    [_instrument sendCommand:setCommand];
    
    MercuryStartProcedureCommand* command =

@@ -7,6 +7,7 @@
 //
 
 #import "RealTimeSignalsViewController.h"
+#import "MercuryProcedure.h"
 
 @interface RealTimeSignalsViewController ()
 {
@@ -38,11 +39,20 @@
       
    }
    
+   //create a set procedure for now to get signal string name
+   MercuryGetProcedureResponse* procedure =
+   [[MercuryGetProcedureResponse alloc] init];
+   
    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-   cell.textLabel.text = [NSString stringWithFormat:@"%@ %@",
-                          [signalsList objectAtIndex:indexPath.row],
-                          [signals objectAtIndex:indexPath.row]
-                          ];
+   
+   cell.textLabel.text =
+   [procedure signalToString:[[signalsList objectAtIndex:indexPath.row] intValue]];
+   
+   cell.detailTextLabel.text =
+   [NSString stringWithFormat:@"%@",
+    [signals objectAtIndex:indexPath.row]
+    ];
+   
    return cell;
 }
 

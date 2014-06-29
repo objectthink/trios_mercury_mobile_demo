@@ -9,40 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "MercuryInstrument.h"
 
-@interface MercuryGetProcedureResponse : MercuryResponse
--(instancetype)initWithMessage:(NSData*)message;
--(NSString*)signalToString:(int)signal;
--(int)signalAtIndex:(int)index;
--(int)indexOfSignal:(int)signal;
-@end
-
-@interface MercuryGetProcedureCommand : MercuryGet
-@end
-
-@interface MercurySetProcedureCommand : MercuryAction
-@end
-
-@interface MercurySegment : MercuryInstrumentItem
-{
-   uint segmentTag;
-   int  segmentId;
-}
--(NSMutableData*)getBytes;
-@end
-
-@interface SegmentIsothermal : MercurySegment
--(instancetype)initWithTime:(float)timeInMinutes;
-@end
-
-@interface SegmentEquilibrate : MercurySegment
--(instancetype)initWithTemperature:(float)equilibrateTemperature;
-@end
-
-@interface SegmentRamp : MercurySegment
--(instancetype)initWithDegreesPerMinute:(float)degreesPerMinute
-                        finalTemerature:(float)finalTemperature;
-@end
-enum DSCSignalIds
+typedef enum DSCSignalIds
 {
    IdInvalid = 0,
    
@@ -288,5 +255,41 @@ enum DSCSignalIds
    IdPowerDelivered,
    
    IdLastDSCSignal
-};
+} DSCSignalId;
+
+@interface MercuryGetProcedureResponse : MercuryResponse
+-(instancetype)initWithMessage:(NSData*)message;
+-(NSString*)signalToString:(int)signal;
+-(int)signalAtIndex:(int)index;
+-(int)indexOfSignal:(int)signal;
+@end
+
+@interface MercurySegment : MercuryInstrumentItem
+{
+   uint segmentTag;
+   int  segmentId;
+}
+-(NSMutableData*)getBytes;
+@end
+
+@interface MercuryGetProcedureCommand : MercuryGet
+@end
+
+@interface MercurySetProcedureCommand : MercuryAction
+-(void)addSegment:(MercurySegment*)segment;
+-(void)addSignal:(DSCSignalId)signal;
+@end
+
+@interface SegmentIsothermal : MercurySegment
+-(instancetype)initWithTime:(float)timeInMinutes;
+@end
+
+@interface SegmentEquilibrate : MercurySegment
+-(instancetype)initWithTemperature:(float)equilibrateTemperature;
+@end
+
+@interface SegmentRamp : MercurySegment
+-(instancetype)initWithDegreesPerMinute:(float)degreesPerMinute
+                        finalTemerature:(float)finalTemperature;
+@end
 
