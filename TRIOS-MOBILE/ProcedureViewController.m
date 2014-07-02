@@ -133,7 +133,7 @@
       
       if ([s isKindOfClass:MercurySgmtRecord.class])
       {
-         MercurySgmtRecord* gr = (MercurySgmtRecord*)r;
+         //MercurySgmtRecord* gr = (MercurySgmtRecord*)r;
       }
       
       if([s isKindOfClass:MercuryGetRecord.class])

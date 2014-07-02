@@ -10,6 +10,10 @@
 #import "MercuryProcedure.h"
 
 static int uniqueTagStatic = 0;
+
+@implementation MercurySegmentEditorViewController
+@end
+
 @implementation MercurySegment
 {
 }
@@ -18,7 +22,7 @@ static int uniqueTagStatic = 0;
 {
    if(self = [super init])
    {
-      segmentTag  = 0x544D4753;  //SGMT
+      _segmentTag  = 0x544D4753;  //SGMT
    }
    return self;
 }
@@ -29,8 +33,8 @@ static int uniqueTagStatic = 0;
    
    [self.bytes setLength:0];
    
-   [self.bytes appendBytes:&segmentTag length:4];
-   [self.bytes appendBytes:&segmentId length:4];
+   [self.bytes appendBytes:&_segmentTag length:4];
+   [self.bytes appendBytes:&_segmentId length:4];
    [self.bytes appendBytes:&uniqueTagStatic length:4];
    
    return self.bytes;
@@ -51,7 +55,7 @@ static int uniqueTagStatic = 0;
 {
    if(self = [super init])
    {
-      segmentId  = 0x01030000;
+      _segmentId  = 0x01030000;
       _timeInMinutes = timeInMinutes;
    }
    
@@ -89,7 +93,7 @@ static int uniqueTagStatic = 0;
 {
    if(self = [super init])
    {
-      segmentId  = 0x01030001;
+      _segmentId  = 0x01030001;
       _equilibrateTemperature = equilibrateTemperature;
    }
    
@@ -128,7 +132,7 @@ static int uniqueTagStatic = 0;
 {
    if(self = [super init])
    {
-      segmentId  = 0x01030002;
+      _segmentId  = 0x01030002;
       _degreesPerMinute = degreesPerMinute;
       _finalTemperature = finalTemperature;
    }

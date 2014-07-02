@@ -257,6 +257,14 @@ typedef enum DSCSignalIds
    IdLastDSCSignal
 } DSCSignalId;
 
+typedef enum SegmentIds
+{
+   Isothermal  = 0x01030000,
+   Equilibrate = 0x01030001,
+   Ramp        = 0x01030002
+   
+} SegmentId;
+
 @interface MercuryGetProcedureResponse : MercuryResponse
 -(instancetype)initWithMessage:(NSData*)message;
 -(NSString*)signalToString:(int)signal;
@@ -266,11 +274,18 @@ typedef enum DSCSignalIds
 
 @interface MercurySegment : MercuryInstrumentItem
 {
-   uint segmentTag;
-   int  segmentId;
+   uint _segmentTag;
+   int  _segmentId;
 }
+
 -(NSString*)name;
 -(NSMutableData*)getBytes;
+
+@property int segmentId;
+@end
+
+@interface MercurySegmentEditorViewController : UIViewController
+@property (weak) MercurySegment* segment;
 @end
 
 @interface MercuryGetProcedureCommand : MercuryGet
@@ -287,6 +302,7 @@ typedef enum DSCSignalIds
 
 @interface SegmentEquilibrate : MercurySegment
 -(instancetype)initWithTemperature:(float)equilibrateTemperature;
+@property float equilibrateTemperature;
 @end
 
 @interface SegmentRamp : MercurySegment

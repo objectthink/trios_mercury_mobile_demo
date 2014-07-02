@@ -7,6 +7,7 @@
 //
 
 #import "SegmentsTableViewController.h"
+#import "IsothermalSegmentEditorViewController.h"
 #import "MercuryProcedure.h"
 
 @interface SegmentsTableViewController ()
@@ -14,11 +15,56 @@
    IBOutlet UIPickerView *_segmentChoiceList;
    IBOutlet UITableView *_segmentSelectedList;
    __weak IBOutlet UIButton *_addButton;
+   
+   UIPopoverController* _popoverController;
 }
 
 @end
 
 @implementation SegmentsTableViewController
+
+-(void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+   [_segmentSelectedList reloadData];
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+   CGRect frame =
+   [tableView rectForRowAtIndexPath:indexPath];
+   
+   MercurySegmentEditorViewController* e;
+   
+   MercurySegment* segment = [_segments objectAtIndex:indexPath.row];
+   
+   switch (segment.segmentId)
+   {
+      case Isothermal:
+         e =
+         [[UIStoryboard storyboardWithName:@"Main_iPad" bundle:nil]
+          instantiateViewControllerWithIdentifier:@"IsothermalEditor"];
+         
+      break;
+      case Equilibrate:
+         e =
+         [[UIStoryboard storyboardWithName:@"Main_iPad" bundle:nil]
+          instantiateViewControllerWithIdentifier:@"EquilibrateEditor"];
+         break;
+      case Ramp:
+         break;
+   }
+   
+   e.segment = segment;
+
+   _popoverController =
+   [[UIPopoverController alloc] initWithContentViewController:e];
+   
+   _popoverController.delegate = self;
+
+   [_popoverController
+    presentPopoverFromRect:[tableView convertRect:frame toView:self.view]
+                      inView:self.view permittedArrowDirections:UIPopoverArrowDirectionRight animated:YES];
+}
 
 -(void)setEditing:(BOOL)editing animated:(BOOL)animated
 {

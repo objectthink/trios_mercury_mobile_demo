@@ -12,7 +12,8 @@
 UITableViewDataSource,
 UITableViewDelegate,
 UIPickerViewDataSource,
-UIPickerViewDelegate
+UIPickerViewDelegate,
+UIPopoverControllerDelegate
 >
 
 @property (strong, nonatomic) NSMutableArray* segments;
