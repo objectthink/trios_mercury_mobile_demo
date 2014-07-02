@@ -135,6 +135,9 @@
 @implementation MercuryGetRecord
 @end
 
+@implementation MercurySgmtRecord
+@end
+
 @implementation MercuryDataRecord
 -(float)valueAtIndex:(int)index
 {
@@ -204,10 +207,16 @@
    if(data == nil)
       return nil;
    
-   if ([tag isEqualToString:@"DATA"])
-      r = [[MercuryDataRecord alloc] initWithTag:tag length:recordLength data:data];
+   if      ([tag isEqualToString:@"DATA"])
+      r = [ [MercuryDataRecord alloc] initWithTag:tag length:recordLength data:data];
+   
    else if([tag isEqualToString:@"GET "])
       r = [[MercuryGetRecord alloc]initWithTag:tag length:recordLength data:data];
+   
+   else if ([tag isEqualToString:@"SGMT"])
+   {
+      r = [[MercurySgmtRecord alloc]initWithTag:tag length:recordLength data:data];
+   }
    else
       r = [[MercuryRecord alloc]initWithTag:tag length:recordLength data:data];
 

@@ -13,11 +13,46 @@
 {   
    IBOutlet UIPickerView *_segmentChoiceList;
    IBOutlet UITableView *_segmentSelectedList;
+   __weak IBOutlet UIButton *_addButton;
 }
 
 @end
 
 @implementation SegmentsTableViewController
+
+-(void)setEditing:(BOOL)editing animated:(BOOL)animated
+{
+   _segmentSelectedList.editing = editing;
+   _addButton.enabled = !editing;
+}
+
+- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
+{
+   return YES;
+}
+
+-  (void)tableView:(UITableView *)tableView
+moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
+       toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+   MercurySegment* segment = [_segments objectAtIndex:sourceIndexPath.row];
+   [_segments removeObjectAtIndex:sourceIndexPath.row];
+   [_segments insertObject:segment atIndex:destinationIndexPath.row];
+
+}
+
+- (void) tableView:(UITableView *)tableView
+commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+ forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+   if (editingStyle == UITableViewCellEditingStyleDelete)
+   {
+      [_segments removeObjectAtIndex:indexPath.row];
+      
+      [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                       withRowAnimation:UITableViewRowAnimationFade];
+   }
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -138,7 +173,7 @@
       
    }
    
-   cell.selectionStyle = UITableViewCellSelectionStyleNone;
+   cell.selectionStyle = UITableViewCellSelectionStyleDefault;
    
    cell.textLabel.text        =
    [[self.segments objectAtIndex:indexPath.row] name];

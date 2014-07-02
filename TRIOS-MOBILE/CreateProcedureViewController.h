@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <SNFSegmentedViewController.h>
+#import "MercuryProcedure.h"
 
 @interface CreateProcedureViewController : SNFSegmentedViewController
-
+@property (weak, nonatomic) MercuryInstrument* instrument;
 @end

@@ -9,7 +9,6 @@
 #import "CreateProcedureViewController.h"
 #import "FlowManager.h"
 #import "AppDelegate.h"
-#import "MercuryProcedure.h"
 #import "SegmentsTableViewController.h"
 
 @interface CreateProcedureViewController ()
@@ -17,6 +16,10 @@
 @end
 
 @implementation CreateProcedureViewController
+{
+   UIBarButtonItem* _editButton;
+   BOOL _isEditing;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -31,28 +34,64 @@
 {
    [super viewDidLoad];
    
-   UIBarButtonItem *doneItem =
-   [[UIBarButtonItem alloc]
-    initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-    target:self
-    action:@selector(doneItemTapped)];
+   _isEditing = NO;
    
-   NSArray *actionButtonItems = @[doneItem];
+   UIBarButtonItem *startItem =
+   [[UIBarButtonItem alloc]
+    initWithBarButtonSystemItem:UIBarButtonSystemItemPlay
+    target:self
+    action:@selector(startItemTapped)];
+   
+   _editButton =
+   [[UIBarButtonItem alloc]
+    initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
+    target:self
+    action:@selector(editItemTapped)];
+
+   NSArray *actionButtonItems = @[startItem, _editButton];
    
    self.navigationItem.rightBarButtonItems = actionButtonItems;
 }
 
--(void)doneItemTapped
+-(void)editItemTapped
+{
+   NSLog(@"selectedIndex:%d", self.selectedIndex);
+   
+   _isEditing = !_isEditing;
+   
+   self.selectedViewController.editing = _isEditing;
+}
+
+-(void)startItemTapped
 {
    NSLog(@"DONE TAPPED!");
    
    SegmentsTableViewController* c =
    [self.viewControllers objectAtIndex:1];
    
+   //SET
+   MercurySetProcedureCommand* setCommand =
+   [[MercurySetProcedureCommand alloc] init];
+   
    for (MercurySegment* segment in c.segments)
    {
-      NSLog(@"%@", segment);
+      NSLog(@"%@",segment);
+      [setCommand addSegment:segment];
    }
+
+   [setCommand addSignal:IdT0C];
+   [setCommand addSignal:IdCommonTime];
+   [setCommand addSignal:IdHeatFlow];
+   
+   [_instrument sendCommand:setCommand];
+   
+   //START
+   MercuryStartProcedureCommand* command =
+   [[MercuryStartProcedureCommand alloc]init];
+   
+   [_instrument sendCommand:command];
+   
+   [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning

@@ -8,6 +8,7 @@
 
 #import "ProcedureViewController.h"
 #import "ProcedureViewTableViewCell.h"
+#import "CreateProcedureViewController.h"
 
 @interface ProcedureViewController ()
 {
@@ -29,13 +30,24 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-   _dataFileVisualizer = [segue destinationViewController];
-   _dataFileVisualizerEx = [segue destinationViewController];
+   if ([segue.identifier isEqualToString:@"CreateProcedureSegue"])
+   {
+      CreateProcedureViewController* c = [segue destinationViewController];
+      
+      c.instrument = _instrument;
+   }
+
+   if ([segue.identifier isEqualToString:@"SignalDetail"])
+   {
+      _dataFileVisualizer = [segue destinationViewController];
+      _dataFileVisualizerEx = [segue destinationViewController];
+   }
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
    _selectedSignalIndex = (int)indexPath.row;
+   
    [self performSegueWithIdentifier:@"SignalDetail" sender:self];
 }
 
@@ -117,6 +129,11 @@
          }
          
          [self.SignalTableView reloadData];
+      }
+      
+      if ([s isKindOfClass:MercurySgmtRecord.class])
+      {
+         MercurySgmtRecord* gr = (MercurySgmtRecord*)r;
       }
       
       if([s isKindOfClass:MercuryGetRecord.class])
