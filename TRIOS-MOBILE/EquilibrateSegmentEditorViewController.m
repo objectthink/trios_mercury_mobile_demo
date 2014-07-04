@@ -13,6 +13,9 @@
 @end
 
 @implementation EquilibrateSegmentEditorViewController
+{
+   IBOutlet UITextField *_equilibrateTemperatureText;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,13 +32,15 @@
 
    SegmentEquilibrate* e = (SegmentEquilibrate*)self.segment;
    
-   NSLog(@"%f", e.equilibrateTemperature);
+   _equilibrateTemperatureText.text =
+   [NSString stringWithFormat:@"%.02f", e.equilibrateTemperature];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
    SegmentEquilibrate* e = (SegmentEquilibrate*)self.segment;
-   e.equilibrateTemperature = 77;
+   
+   e.equilibrateTemperature = [_equilibrateTemperatureText.text floatValue];
 }
 
 - (void)didReceiveMemoryWarning

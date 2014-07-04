@@ -298,6 +298,7 @@ typedef enum SegmentIds
 
 @interface SegmentIsothermal : MercurySegment
 -(instancetype)initWithTime:(float)timeInMinutes;
+@property float timeInMinutes;
 @end
 
 @interface SegmentEquilibrate : MercurySegment
@@ -308,5 +309,7 @@ typedef enum SegmentIds
 @interface SegmentRamp : MercurySegment
 -(instancetype)initWithDegreesPerMinute:(float)degreesPerMinute
                         finalTemerature:(float)finalTemperature;
+@property float degreesPerMinute;
+@property float finalTemperature;
 @end
 

@@ -7,7 +7,6 @@
 //
 
 #import "SegmentsTableViewController.h"
-#import "IsothermalSegmentEditorViewController.h"
 #import "MercuryProcedure.h"
 
 @interface SegmentsTableViewController ()
@@ -43,14 +42,16 @@
          e =
          [[UIStoryboard storyboardWithName:@"Main_iPad" bundle:nil]
           instantiateViewControllerWithIdentifier:@"IsothermalEditor"];
-         
-      break;
+         break;
       case Equilibrate:
          e =
          [[UIStoryboard storyboardWithName:@"Main_iPad" bundle:nil]
           instantiateViewControllerWithIdentifier:@"EquilibrateEditor"];
          break;
       case Ramp:
+         e =
+         [[UIStoryboard storyboardWithName:@"Main_iPad" bundle:nil]
+          instantiateViewControllerWithIdentifier:@"RampEditor"];
          break;
    }
    

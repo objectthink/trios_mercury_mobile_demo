@@ -79,7 +79,7 @@ static int uniqueTagStatic = 0;
 - (NSString *)description
 {
    return
-   [NSString stringWithFormat:@"TimeInMinutes:%f", _timeInMinutes];
+   [NSString stringWithFormat:@"TimeInMinutes: %0.2f", _timeInMinutes];
 }
 
 @end
@@ -108,7 +108,7 @@ static int uniqueTagStatic = 0;
 - (NSString *)description
 {
    return
-   [NSString stringWithFormat:@"Equilibrate Temperature:%f", _equilibrateTemperature];
+   [NSString stringWithFormat:@"Equilibrate Temperature: %.02f", _equilibrateTemperature];
 }
 
 -(NSMutableData*)getBytes
@@ -148,7 +148,7 @@ static int uniqueTagStatic = 0;
 - (NSString *)description
 {
    return
-   [NSString stringWithFormat:@"DegreesPerMinute:%f FinalTemperature:%f", _degreesPerMinute, _finalTemperature];
+   [NSString stringWithFormat:@"DegreesPerMinute: %.02f FinalTemperature: %.02f", _degreesPerMinute, _finalTemperature];
 }
 
 -(NSMutableData*)getBytes

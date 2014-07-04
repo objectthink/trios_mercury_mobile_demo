@@ -1,19 +1,21 @@
 //
-//  IsothermalSegmentEditorViewController.m
+//  RampSegmentEditorViewController.m
 //  TRIOS-MOBILE
 //
-//  Created by stephen eshelman on 7/2/14.
+//  Created by stephen eshelman on 7/4/14.
 //  Copyright (c) 2014 objectthink.com. All rights reserved.
 //
 
-#import "IsothermalSegmentEditorViewController.h"
+#import "RampSegmentEditorViewController.h"
 
-@interface IsothermalSegmentEditorViewController ()
+@interface RampSegmentEditorViewController ()
+
 @end
 
-@implementation IsothermalSegmentEditorViewController
+@implementation RampSegmentEditorViewController
 {
-   IBOutlet UITextField *_timeInMinutesText;
+   IBOutlet UITextField *_degreesPerMinuteText;
+   IBOutlet UITextField *_finalTemperatureText;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -29,16 +31,21 @@
 {
     [super viewDidLoad];
    
-   SegmentIsothermal* i = (SegmentIsothermal*)self.segment;
+   SegmentRamp* r = (SegmentRamp*)self.segment;
    
-   _timeInMinutesText.text =
-   [NSString stringWithFormat:@"%.02f", i.timeInMinutes];
+   _degreesPerMinuteText.text =
+   [NSString stringWithFormat:@"%.02f", r.degreesPerMinute];
+   
+   _finalTemperatureText.text =
+   [NSString stringWithFormat:@"%.02f", r.finalTemperature];
 }
 
 -(void)viewWillDisappear:(BOOL)animated
 {
-   SegmentIsothermal* i = (SegmentIsothermal*)self.segment;
-   i.timeInMinutes = [_timeInMinutesText.text floatValue];
+   SegmentRamp* r = (SegmentRamp*)self.segment;
+   
+   r.degreesPerMinute = [_degreesPerMinuteText.text floatValue];
+   r.finalTemperature = [_finalTemperatureText.text floatValue];
 }
 
 - (void)didReceiveMemoryWarning
