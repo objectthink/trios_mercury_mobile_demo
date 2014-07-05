@@ -82,6 +82,12 @@ static int uniqueTagStatic = 0;
    [NSString stringWithFormat:@"TimeInMinutes: %0.2f", _timeInMinutes];
 }
 
+-(instancetype)copyWithZone:(NSZone *)zone
+{
+   SegmentIsothermal* segment =
+   [[SegmentIsothermal alloc]initWithTime:_timeInMinutes];
+   return segment;
+}
 @end
 
 @implementation SegmentEquilibrate
@@ -118,6 +124,13 @@ static int uniqueTagStatic = 0;
    [self.bytes appendBytes:&_equilibrateTemperature length:4];
    
    return self.bytes;
+}
+
+-(instancetype)copyWithZone:(NSZone *)zone
+{
+   SegmentEquilibrate* segment =
+   [[SegmentEquilibrate alloc] initWithTemperature:_equilibrateTemperature];
+   return segment;
 }
 @end
 
@@ -159,6 +172,57 @@ static int uniqueTagStatic = 0;
    [self.bytes appendBytes:&_degreesPerMinute length:4];
    
    return self.bytes;
+}
+
+-(instancetype)copyWithZone:(NSZone *)zone
+{
+   SegmentRamp* segment =
+   [[SegmentRamp alloc]initWithDegreesPerMinute:_degreesPerMinute finalTemerature:_finalTemperature];
+   return segment;
+}
+@end
+
+@implementation SegmentDataOn
+{
+   BOOL _on;
+}
+
+-(instancetype)initWithBool:(BOOL)on
+{
+   if(self = [super init])
+   {
+      _segmentId  = DataOn;
+      _on = on;
+   }
+   
+   return self;
+}
+
+-(NSString*)name
+{
+   return @"Data On";
+}
+
+-(NSString*)description
+{
+   return
+   [NSString stringWithFormat:@"Data On: %@",_on?@"Yes":@"No"];
+}
+
+-(NSMutableData*)getBytes
+{
+   [super getBytes];
+   
+   [self.bytes appendBytes:&_on length:4];
+   
+   return self.bytes;
+}
+
+-(instancetype)copyWithZone:(NSZone *)zone
+{
+   SegmentDataOn* segment =
+   [[SegmentDataOn alloc]initWithBool:_on];
+   return segment;
 }
 @end
 

@@ -261,7 +261,9 @@ typedef enum SegmentIds
 {
    Isothermal  = 0x01030000,
    Equilibrate = 0x01030001,
-   Ramp        = 0x01030002
+   Ramp        = 0x01030002,
+   Repeat      = 0x00030000,
+   DataOn      = 0x00030001
    
 } SegmentId;
 
@@ -303,6 +305,7 @@ typedef enum SegmentIds
 
 @interface SegmentEquilibrate : MercurySegment
 -(instancetype)initWithTemperature:(float)equilibrateTemperature;
+-(instancetype)copyWithZone:(NSZone *)zone;
 @property float equilibrateTemperature;
 @end
 
@@ -313,3 +316,7 @@ typedef enum SegmentIds
 @property float finalTemperature;
 @end
 
+@interface SegmentDataOn : MercurySegment
+-(instancetype)initWithBool:(BOOL)on;
+@property BOOL on;
+@end

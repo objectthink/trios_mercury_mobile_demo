@@ -13,9 +13,12 @@
 {   
    IBOutlet UIPickerView *_segmentChoiceList;
    IBOutlet UITableView *_segmentSelectedList;
+   
    __weak IBOutlet UIButton *_addButton;
    
    UIPopoverController* _popoverController;
+   
+   NSArray* _choices;
 }
 
 @end
@@ -55,16 +58,20 @@
          break;
    }
    
-   e.segment = segment;
-
-   _popoverController =
-   [[UIPopoverController alloc] initWithContentViewController:e];
-   
-   _popoverController.delegate = self;
-
-   [_popoverController
-    presentPopoverFromRect:[tableView convertRect:frame toView:self.view]
-                      inView:self.view permittedArrowDirections:UIPopoverArrowDirectionRight animated:YES];
+   //do we have an editor for the taped segment?
+   if (e != nil)
+   {
+      e.segment = segment;
+      
+      _popoverController =
+      [[UIPopoverController alloc] initWithContentViewController:e];
+      
+      _popoverController.delegate = self;
+      
+      [_popoverController
+       presentPopoverFromRect:[tableView convertRect:frame toView:self.view]
+       inView:self.view permittedArrowDirections:UIPopoverArrowDirectionRight animated:YES];
+   }
 }
 
 -(void)setEditing:(BOOL)editing animated:(BOOL)animated
@@ -117,6 +124,14 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
    self.segments = [[NSMutableArray alloc]init];
    self.signals  = [[NSMutableArray alloc] init];
    
+   _choices =
+  @[
+    [[SegmentEquilibrate alloc] initWithTemperature:40.0],
+    [[SegmentIsothermal alloc]initWithTime:1.00],
+    [[SegmentRamp alloc]initWithDegreesPerMinute:20 finalTemerature:50],
+    [[SegmentDataOn alloc]initWithBool:YES]
+    ];
+   
    // Uncomment the following line to preserve selection between presentations.
    // self.clearsSelectionOnViewWillAppear = NO;
    
@@ -134,18 +149,10 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
    int selected =
    [_segmentChoiceList selectedRowInComponent:0];
    
-   switch (selected)
-   {
-      case 0:
-         [_segments addObject:[[SegmentEquilibrate alloc]initWithTemperature:40.0]];
-         break;
-      case 1:
-         [_segments addObject:[[SegmentIsothermal alloc] initWithTime:1.0]];
-         break;
-      case 2:
-         [_segments addObject:[[SegmentRamp alloc] initWithDegreesPerMinute:20 finalTemerature:50.0]];
-          break;
-   }
+   MercurySegment* segment =
+   [_choices objectAtIndex:selected];
+   
+   [_segments addObject:[segment copy]];
    
    [_segmentSelectedList reloadData];
 }
@@ -158,42 +165,17 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent: (NSInteger)component
 {
-   return 3;
+   return [_choices count];
 }
 
 -(NSString *)pickerView:(UIPickerView *)pickerView
             titleForRow:(NSInteger)row
            forComponent:(NSInteger)component
 {
-   switch (row)
-   {
-      case 0:
-         return @"Equilibrate";
-         break;
-      case 1:
-         return @"Isothermal";
-         break;
-      case 2:
-         return @"Ramp";
-         break;
-   }
+   MercurySegment* segment =
+   [_choices objectAtIndex:row];
    
-   return @"Viewer";
-}
-
-- (void)pickerView:(UIPickerView *)pickerView
-      didSelectRow:(NSInteger)row
-       inComponent:(NSInteger)component
-{
-   switch (row)
-   {
-      case 0:
-         break;
-      case 1:
-         break;
-      case 2:
-         break;
-   }
+   return [segment name];
 }
 
 #pragma mark - Table view data source

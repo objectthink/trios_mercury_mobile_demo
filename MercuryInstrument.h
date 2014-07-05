@@ -25,7 +25,7 @@ typedef enum
 }
 MercuryCommandId;
 
-@interface MercuryInstrumentItem : NSObject
+@interface MercuryInstrumentItem : NSObject <NSCopying>
 {
 }
 @property (strong, nonatomic) NSMutableData* bytes;

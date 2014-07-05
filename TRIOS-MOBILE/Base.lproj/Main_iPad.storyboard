@@ -334,7 +334,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hvx-4T-8zR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7489" y="3477"/>
+            <point key="canvasLocation" x="7449" y="1217"/>
         </scene>
         <!--Isothermal Segment Editor View Controller-->
         <scene sceneID="lRP-MJ-Ce5">
@@ -376,7 +376,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N1b-2b-ciG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7481" y="2369"/>
+            <point key="canvasLocation" x="7441" y="109"/>
         </scene>
         <!--View Controller - Signals-->
         <scene sceneID="QF2-k6-YL5">
@@ -456,7 +456,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n7u-9F-fwa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7489" y="4629"/>
+            <point key="canvasLocation" x="7449" y="2369"/>
         </scene>
         <!--Real Time Signals View Controller - Real Time Signals-->
         <scene sceneID="wg7-f3-ORb">
