@@ -300,6 +300,7 @@ typedef enum SegmentIds
 
 @interface SegmentIsothermal : MercurySegment
 -(instancetype)initWithTime:(float)timeInMinutes;
+-(instancetype)copyWithZone:(NSZone *)zone;
 @property float timeInMinutes;
 @end
 
@@ -312,11 +313,21 @@ typedef enum SegmentIds
 @interface SegmentRamp : MercurySegment
 -(instancetype)initWithDegreesPerMinute:(float)degreesPerMinute
                         finalTemerature:(float)finalTemperature;
+-(instancetype)copyWithZone:(NSZone *)zone;
 @property float degreesPerMinute;
 @property float finalTemperature;
 @end
 
 @interface SegmentDataOn : MercurySegment
 -(instancetype)initWithBool:(BOOL)on;
+-(instancetype)copyWithZone:(NSZone *)zone;
 @property BOOL on;
 @end
+
+@interface SegmentRepeat : MercurySegment
+-(instancetype)initWithRepeatIndex:(uint)index count:(uint)count;
+-(instancetype)copyWithZone:(NSZone *)zone;
+@property uint repeatIndex;
+@property uint count;
+@end
+

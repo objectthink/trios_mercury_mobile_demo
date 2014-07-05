@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		011F7E901968B0B500A2FE6A /* DataOnSegmentEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 011F7E8F1968B0B500A2FE6A /* DataOnSegmentEditorViewController.m */; };
+		011F7E931968BBBA00A2FE6A /* RepeatSegmentEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 011F7E921968BBBA00A2FE6A /* RepeatSegmentEditorViewController.m */; };
 		012118A4193FE44F00CCA161 /* MercuryInstrument.m in Sources */ = {isa = PBXBuildFile; fileRef = 012118A3193FE44F00CCA161 /* MercuryInstrument.m */; };
 		012118A7193FF67C00CCA161 /* logo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 012118A6193FF67C00CCA161 /* logo.gif */; };
 		012118A91942880000CCA161 /* thumbnails-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 012118A81942880000CCA161 /* thumbnails-2.png */; };
@@ -65,6 +67,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		011F7E8E1968B0B500A2FE6A /* DataOnSegmentEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataOnSegmentEditorViewController.h; sourceTree = "<group>"; };
+		011F7E8F1968B0B500A2FE6A /* DataOnSegmentEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataOnSegmentEditorViewController.m; sourceTree = "<group>"; };
+		011F7E911968BBBA00A2FE6A /* RepeatSegmentEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RepeatSegmentEditorViewController.h; sourceTree = "<group>"; };
+		011F7E921968BBBA00A2FE6A /* RepeatSegmentEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RepeatSegmentEditorViewController.m; sourceTree = "<group>"; };
 		012118A2193FE44F00CCA161 /* MercuryInstrument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MercuryInstrument.h; path = ../MercuryInstrument.h; sourceTree = "<group>"; };
 		012118A3193FE44F00CCA161 /* MercuryInstrument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MercuryInstrument.m; path = ../MercuryInstrument.m; sourceTree = "<group>"; };
 		012118A6193FF67C00CCA161 /* logo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = logo.gif; sourceTree = "<group>"; };
@@ -243,10 +249,14 @@
 				018484ED193F284A00D5820B /* Main_iPad.storyboard */,
 				01D078C6196496DB009C02B9 /* EquilibrateSegmentEditorViewController.h */,
 				01D078C7196496DB009C02B9 /* EquilibrateSegmentEditorViewController.m */,
+				011F7E911968BBBA00A2FE6A /* RepeatSegmentEditorViewController.h */,
+				011F7E921968BBBA00A2FE6A /* RepeatSegmentEditorViewController.m */,
 				01D078C319648B2A009C02B9 /* IsothermalSegmentEditorViewController.h */,
 				01D078C419648B2A009C02B9 /* IsothermalSegmentEditorViewController.m */,
 				730978631966E89C00E7BC5B /* RampSegmentEditorViewController.h */,
 				730978641966E89C00E7BC5B /* RampSegmentEditorViewController.m */,
+				011F7E8E1968B0B500A2FE6A /* DataOnSegmentEditorViewController.h */,
+				011F7E8F1968B0B500A2FE6A /* DataOnSegmentEditorViewController.m */,
 				01BAB4D5195FBF1E00BDEA2A /* CreateProcedureViewController.h */,
 				01BAB4D6195FBF1E00BDEA2A /* CreateProcedureViewController.m */,
 				73A623701955F087006AB95F /* ProcedureDetailViewController.h */,
@@ -441,9 +451,11 @@
 				018484F5193F284A00D5820B /* SecondViewController.m in Sources */,
 				01C4D2591953C1E500AA5523 /* ProcedureViewTableViewCell.m in Sources */,
 				01D078C519648B2A009C02B9 /* IsothermalSegmentEditorViewController.m in Sources */,
+				011F7E901968B0B500A2FE6A /* DataOnSegmentEditorViewController.m in Sources */,
 				018484E9193F284A00D5820B /* AppDelegate.m in Sources */,
 				7329949019609A1D004C820D /* SegmentsTableViewController.m in Sources */,
 				73A9E91319510E8A003150E1 /* MercuryProcedure.m in Sources */,
+				011F7E931968BBBA00A2FE6A /* RepeatSegmentEditorViewController.m in Sources */,
 				73A623721955F087006AB95F /* ProcedureDetailViewController.m in Sources */,
 				73E868ED1942B83D004A7C62 /* TabBarViewController.m in Sources */,
 				01D078C8196496DB009C02B9 /* EquilibrateSegmentEditorViewController.m in Sources */,

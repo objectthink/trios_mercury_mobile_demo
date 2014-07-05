@@ -56,6 +56,16 @@
          [[UIStoryboard storyboardWithName:@"Main_iPad" bundle:nil]
           instantiateViewControllerWithIdentifier:@"RampEditor"];
          break;
+      case DataOn:
+         e =
+         [[UIStoryboard storyboardWithName:@"Main_iPad" bundle:nil]
+          instantiateViewControllerWithIdentifier:@"DataOnEditor"];
+         break;
+      case Repeat:
+         e =
+         [[UIStoryboard storyboardWithName:@"Main_iPad" bundle:nil]
+          instantiateViewControllerWithIdentifier:@"RepeatEditor"];
+         break;
    }
    
    //do we have an editor for the taped segment?
@@ -129,7 +139,8 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
     [[SegmentEquilibrate alloc] initWithTemperature:40.0],
     [[SegmentIsothermal alloc]initWithTime:1.00],
     [[SegmentRamp alloc]initWithDegreesPerMinute:20 finalTemerature:50],
-    [[SegmentDataOn alloc]initWithBool:YES]
+    [[SegmentDataOn alloc]initWithBool:YES],
+    [[SegmentRepeat alloc] initWithRepeatIndex:0 count:1]
     ];
    
    // Uncomment the following line to preserve selection between presentations.

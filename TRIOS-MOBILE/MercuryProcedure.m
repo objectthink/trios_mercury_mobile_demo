@@ -226,6 +226,55 @@ static int uniqueTagStatic = 0;
 }
 @end
 
+@implementation SegmentRepeat
+{
+   uint _repeatIndex;
+   uint _count;
+}
+
+-(instancetype)initWithRepeatIndex:(uint)index count:(uint)count
+{
+   if(self = [super init])
+   {
+      _segmentId  = Repeat;
+
+      _repeatIndex = index;
+      _count = count;
+   }
+   
+   return self;
+}
+
+-(NSString*)name
+{
+   return @"Repeat";
+}
+
+-(NSString*)description
+{
+   return
+   [NSString stringWithFormat:@"Repeat Index: %d Count: %d", _repeatIndex, _count];
+}
+
+-(NSMutableData*)getBytes
+{
+   [super getBytes];
+   
+   [self.bytes appendBytes:&_repeatIndex length:4];
+   [self.bytes appendBytes:&_count length:4];
+   
+   return self.bytes;
+}
+
+-(instancetype)copyWithZone:(NSZone *)zone
+{
+   SegmentRepeat* segment =
+   [[SegmentRepeat alloc] initWithRepeatIndex:_repeatIndex count:_count];
+   
+   return segment;
+}
+@end
+
 @implementation MercuryGetProcedureResponse
 {
    NSDictionary* _signalToString;
