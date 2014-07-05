@@ -40,7 +40,7 @@
    [NSString stringWithFormat:@"%d", segment.count];
 }
 
--(void)viewDidDisappear:(BOOL)animated
+-(void)viewWillDisappear:(BOOL)animated
 {
    SegmentRepeat* s = (SegmentRepeat*)self.segment;
    
