@@ -18,6 +18,8 @@
 @implementation CreateProcedureViewController
 {
    UIBarButtonItem* _editButton;
+   UIBarButtonItem* _doneButton;
+   UIBarButtonItem* _startButton;
    BOOL _isEditing;
 }
 
@@ -36,7 +38,7 @@
    
    _isEditing = NO;
    
-   UIBarButtonItem *startItem =
+   _startButton =
    [[UIBarButtonItem alloc]
     initWithBarButtonSystemItem:UIBarButtonSystemItemPlay
     target:self
@@ -48,9 +50,13 @@
     target:self
     action:@selector(editItemTapped)];
 
-   NSArray *actionButtonItems = @[startItem, _editButton];
-   
-   self.navigationItem.rightBarButtonItems = actionButtonItems;
+   _doneButton =
+   [[UIBarButtonItem alloc]
+    initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+    target:self
+    action:@selector(editItemTapped)];
+
+   self.navigationItem.rightBarButtonItems = @[_startButton, _editButton];
 }
 
 -(void)editItemTapped
@@ -59,6 +65,11 @@
    
    _isEditing = !_isEditing;
    
+   if(_isEditing)
+      self.navigationItem.rightBarButtonItems = @[_startButton, _doneButton];
+   else
+      self.navigationItem.rightBarButtonItems = @[_startButton, _editButton];
+
    self.selectedViewController.editing = _isEditing;
 }
 
