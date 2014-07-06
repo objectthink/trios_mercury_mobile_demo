@@ -51,6 +51,7 @@
 		73A6237C1955F285006AB95F /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 73A6237B1955F285006AB95F /* libstdc++.dylib */; };
 		73A9E91319510E8A003150E1 /* MercuryProcedure.m in Sources */ = {isa = PBXBuildFile; fileRef = 73A9E91219510E8A003150E1 /* MercuryProcedure.m */; };
 		73AC8599194D133E00141413 /* MercuryStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 73AC8598194D133E00141413 /* MercuryStatus.m */; };
+		73E3BCBE1969869300B69604 /* SignalsTableTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73E3BCBD1969869300B69604 /* SignalsTableTableViewController.m */; };
 		73E868ED1942B83D004A7C62 /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73E868EC1942B83D004A7C62 /* TabBarViewController.m */; };
 		73E868F019432F3C004A7C62 /* RealTimeSignalsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 73E868EF19432F3C004A7C62 /* RealTimeSignalsViewController.m */; };
 		D612AD408778477CB388787D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F96985E5B4BE46578BA68F4C /* libPods.a */; };
@@ -136,6 +137,8 @@
 		73A9E91219510E8A003150E1 /* MercuryProcedure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MercuryProcedure.m; sourceTree = "<group>"; };
 		73AC8597194D133E00141413 /* MercuryStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MercuryStatus.h; sourceTree = "<group>"; };
 		73AC8598194D133E00141413 /* MercuryStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MercuryStatus.m; sourceTree = "<group>"; };
+		73E3BCBC1969869300B69604 /* SignalsTableTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SignalsTableTableViewController.h; path = ../SignalsTableTableViewController.h; sourceTree = "<group>"; };
+		73E3BCBD1969869300B69604 /* SignalsTableTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SignalsTableTableViewController.m; path = ../SignalsTableTableViewController.m; sourceTree = "<group>"; };
 		73E868EB1942B83D004A7C62 /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
 		73E868EC1942B83D004A7C62 /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
 		73E868EE19432F3C004A7C62 /* RealTimeSignalsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RealTimeSignalsViewController.h; sourceTree = "<group>"; };
@@ -275,6 +278,8 @@
 				018484F4193F284A00D5820B /* SecondViewController.m */,
 				7329948E19609A1D004C820D /* SegmentsTableViewController.h */,
 				7329948F19609A1D004C820D /* SegmentsTableViewController.m */,
+				73E3BCBC1969869300B69604 /* SignalsTableTableViewController.h */,
+				73E3BCBD1969869300B69604 /* SignalsTableTableViewController.m */,
 				018484F6193F284A00D5820B /* Images.xcassets */,
 				018484DF193F284A00D5820B /* Supporting Files */,
 			);
@@ -458,6 +463,7 @@
 				011F7E931968BBBA00A2FE6A /* RepeatSegmentEditorViewController.m in Sources */,
 				73A623721955F087006AB95F /* ProcedureDetailViewController.m in Sources */,
 				73E868ED1942B83D004A7C62 /* TabBarViewController.m in Sources */,
+				73E3BCBE1969869300B69604 /* SignalsTableTableViewController.m in Sources */,
 				01D078C8196496DB009C02B9 /* EquilibrateSegmentEditorViewController.m in Sources */,
 				01BAB4DA195FC24E00BDEA2A /* FlowManager.m in Sources */,
 				012118A4193FE44F00CCA161 /* MercuryInstrument.m in Sources */,
