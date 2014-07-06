@@ -1,4 +1,4 @@
-//
+ //
 //  SignalsTableTableViewController.h
 //  TRIOS-MOBILE
 //
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SignalsTableTableViewController : UITableViewController
+@interface SignalsTableTableViewController : UIViewController
 
 @end
