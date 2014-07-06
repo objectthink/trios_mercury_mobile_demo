@@ -7,9 +7,9 @@
 //
 
 #import "SignalsTableTableViewController.h"
+#import "AppDelegate.h"
 
 @interface SignalsTableTableViewController ()
-
 @end
 
 @implementation SignalsTableTableViewController
@@ -35,28 +35,38 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-   // Return the number of sections.
-   return 0;
+   return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-   // Return the number of rows in the section.
-   return 0;
+   AppDelegate* app =
+   [[UIApplication sharedApplication] delegate];
+   
+   return [[app.instrument knownSignalNames] count];
 }
 
-/*
- - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
- {
- UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
- 
- // Configure the cell...
- 
- return cell;
- }
- */
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+   AppDelegate* app =
+   [[UIApplication sharedApplication] delegate];
+
+   UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+   
+   if (cell == nil)
+   {
+      cell = [[UITableViewCell alloc]
+              initWithStyle:UITableViewCellStyleSubtitle
+              reuseIdentifier:@"MyIdentifier"];
+      
+   }
+   
+   cell.textLabel.text = [[app.instrument knownSignalNames] objectAtIndex:indexPath.row];
+   
+   cell.accessoryView = [[UISwitch alloc]init];
+   
+   return cell;
+}
 
 /*
  // Override to support conditional editing of the table view.

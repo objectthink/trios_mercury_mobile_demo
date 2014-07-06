@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SignalsTableTableViewController : UIViewController
+@interface SignalsTableTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end

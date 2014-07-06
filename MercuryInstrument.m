@@ -7,6 +7,7 @@
 //
 
 #import "MercuryInstrument.h"
+#import "MercuryProcedure.h"
 
 union intToFloat
 {
@@ -83,6 +84,16 @@ union intToFloat
    //////////////////////////////////////////
 
    return value;
+}
+
+-(instancetype)copyWithZone:(NSZone *)zone
+{
+   //this should never be called
+   @throw
+   [NSException
+    exceptionWithName:@"Abstract"
+    reason:@"copy called from MercuryInstrumentItem"
+    userInfo:nil];
 }
 @end
 
@@ -206,6 +217,53 @@ union intToFloat
 {
    NSMutableArray* delegates;
    uint _sequenceNumber;
+   
+   NSDictionary* _signalToString;
+}
+
+-(instancetype)init
+{
+   if ([super init])
+   {
+      _signalToString =
+      @{
+        [NSNumber numberWithInt:IdHeaterADC] : @"IdHeaterADC",
+        [NSNumber numberWithInt:IdHeaterMV] : @"IdHeaterMV",
+        [NSNumber numberWithInt:IdHeaterC] : @"IdHeaterC",
+        [NSNumber numberWithInt:IdFlangeADC] : @"IdFlangeADC",
+        [NSNumber numberWithInt:IdFlangeMV] : @"IdFlangeMV",
+        [NSNumber numberWithInt:IdFlangeC] : @"IdFlangeC",
+        [NSNumber numberWithInt:IdT0UncorrectedADC] : @"IdT0UncorrectedADC",
+        [NSNumber numberWithInt:IdT0UncorrectedMV] : @"IdT0UncorrectedMV",
+        [NSNumber numberWithInt:IdT0C] : @"IdT0C",
+        [NSNumber numberWithInt:IdT0UncorrectedC] : @"IdT0UncorrectedC",
+        [NSNumber numberWithInt:IdRefJunctionADC] : @"IdRefJunctionADC",
+        [NSNumber numberWithInt:IdDeltaT0ADC] : @"IdDeltaT0ADC",
+        [NSNumber numberWithInt:IdDeltaT0MV] : @"IdDeltaT0MV",
+        [NSNumber numberWithInt:IdDeltaT0UVUnc] : @"IdDeltaT0UVUnc",
+        [NSNumber numberWithInt:IdRefJunctionMV] : @"IdRefJunctionMV",
+        [NSNumber numberWithInt:IdRefJunctionC] : @"IdRefJunctionC",
+        [NSNumber numberWithInt:IdDeltaLidADC] : @"IdDeltaLidADC",
+        [NSNumber numberWithInt:IdDeltaLidMV] : @"IdDeltaLidMV",
+        [NSNumber numberWithInt:IdDeltaLidUV] : @"IdDeltaLidUV",
+        [NSNumber numberWithInt:IdDTAmpTempADC] : @"IdDTAmpTempADC",
+        [NSNumber numberWithInt:IdDTAmpTempMV] : @"IdDTAmpTempMV",
+        [NSNumber numberWithInt:IdDTAmpTempC] : @"IdDTAmpTempC",
+        [NSNumber numberWithInt:IdDeltaT0CUnc] : @"IdDeltaT0CUnc",
+        [NSNumber numberWithInt:IdDeltaT0C] : @"IdDeltaT0C",
+        [NSNumber numberWithInt:IdSampleTC] : @"IdSampleTC",
+        
+        [NSNumber numberWithInt:IdCommonTime] : @"IdCommonTime",
+        [NSNumber numberWithInt:IdHeatFlow]:@"IdHeatFlow"
+        };
+   }
+   
+   return self;
+}
+
+-(NSArray*)knownSignalNames
+{
+   return [_signalToString allValues];
 }
 
 -(void)addDelegate:(id<MercuryInstrumentDelegate>)delegate
@@ -511,7 +569,4 @@ union intToFloat
    if(self.instrumentDelegate != nil)
       [self.instrumentDelegate error:error];
 }
-
-
-
 @end

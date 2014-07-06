@@ -22,8 +22,7 @@ typedef enum
    MercurySetProcedureCommandId = 0x01010000,
    MercuryGetProcedureStatusCommandId = 0x00000009,
    MercuryGetDataFileStatusCommandId = 0x00000006
-}
-MercuryCommandId;
+}MercuryCommandId;
 
 @interface MercuryInstrumentItem : NSObject <NSCopying>
 {
@@ -57,8 +56,6 @@ MercuryCommandId;
 @end
 
 @interface MercuryResponse : MercuryInstrumentItem
-{
-}
 @property (strong, nonatomic) NSMutableData* bytes;
 @end
 
@@ -110,6 +107,8 @@ MercuryCommandId;
 @property (nonatomic) MercuryAccess access;
 @property (strong, nonatomic)NSString* host;
 
+-(instancetype)init;
+
 -(BOOL)connectToHost:(NSString*)host andPort:(uint16_t)port;
 -(void)disconnect;
 
@@ -123,7 +122,6 @@ MercuryCommandId;
 
 -(float)floatAtOffset:(NSUInteger)offset inData:(NSData*)data;
 -(uint)uintAtOffset:(NSUInteger)offset inData:(NSData*)data;
-
 -(void)addDelegate:(id<MercuryInstrumentDelegate>) delegate;
-
+-(NSArray*)knownSignalNames;
 @end
