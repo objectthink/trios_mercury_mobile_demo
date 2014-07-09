@@ -12,6 +12,7 @@
 #import "MercuryProcedure.h"
 
 @class MercuryDataRecord;
+@class MercurySgmtRecord;
 
 enum MercuryKnownFileType
 {
@@ -19,6 +20,11 @@ enum MercuryKnownFileType
    ProcedurePreamble,
    ProcedureEpilogue
 };
+
+@interface Util : NSObject
++(float)floatAtOffset:(NSUInteger)offset inData:(NSData*)data;
++(uint )uintAtOffset :(NSUInteger)offset inData:(NSData*)data;
+@end
 
 @protocol MercuryDataFileVisualizer <NSObject>
 -(void)pointData:(float)data time:(float)time;
@@ -31,6 +37,11 @@ enum MercuryKnownFileType
          xSignal:(int)xSignal
          ySignal:(int)ySignal
      seriesIndex:(int)seriesIndex;
+
+-(void)procedure:(MercuryGetProcedureResponse*)procedure
+         segment:(MercurySgmtRecord*)segment;
+
+-(void)end;
 @end
 
 @protocol IMercuryRecord
@@ -85,6 +96,7 @@ enum MercuryKnownFileType
 @end
 
 @interface MercurySgmtRecord : MercuryRecord
+@property uint segmentId;
 @end
 
 @interface MercuryFile : NSObject <IMercuryFile>

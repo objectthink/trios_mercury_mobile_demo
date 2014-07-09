@@ -8,6 +8,25 @@
 
 #import "MercuryFile.h"
 
+@implementation Util
++(float)floatAtOffset:(NSUInteger)offset inData:(NSData*)data
+{
+   float value;
+   [data getBytes:&value range:NSMakeRange(offset, 4)];
+   
+   return value;
+}
+
++(uint)uintAtOffset:(NSUInteger)offset inData:(NSData*)data
+{
+   int value;
+   [data getBytes:&value range:NSMakeRange(offset, 4)];
+   
+   return value;
+}
+
+@end
+
 @implementation MercuryReadFileCommand
 {
    NSString*   _filename;
@@ -136,6 +155,18 @@
 @end
 
 @implementation MercurySgmtRecord
+{
+   uint _segmentId;
+}
+-(instancetype)initWithTag:(NSString*)tag length:(int)length data:(NSData*)data
+{
+   if(self = [super initWithTag:tag length:length data:data])
+   {
+      _segmentId = [Util uintAtOffset:4 inData:data];
+   }
+   
+   return self;
+}
 @end
 
 @implementation MercuryDataRecord

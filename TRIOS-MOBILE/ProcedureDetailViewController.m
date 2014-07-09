@@ -11,7 +11,9 @@
 #import "MercuryProcedure.h"
 #import <ShinobiCharts/ShinobiChart.h>
 
-@interface ProcedureDetailViewController () <SChartDatasource, MercuryDataFileVisualizer, MercuryDataFileVisualizerEx>
+@interface ProcedureDetailViewController () <SChartDatasource,
+MercuryDataFileVisualizer,
+MercuryDataFileVisualizerEx>
 @end
 
 @implementation ProcedureDetailViewController
@@ -19,6 +21,40 @@
    ShinobiChart* _chart;
    float _data;
    float _time;
+}
+
+-(void)end
+{
+   self.navigationItem.title = @"Done";
+}
+
+-(void)procedure:(MercuryGetProcedureResponse *)procedure
+         segment:(MercurySegment *)segment
+{
+   switch (segment.segmentId) {
+      case Isothermal:
+         self.navigationItem.title = @"Isothermal";
+         break;
+         
+      case Equilibrate:
+         self.navigationItem.title = @"Equilibrate";
+         break;
+      
+      case Ramp:
+         self.navigationItem.title = @"Ramp";
+         break;
+         
+      case Repeat:
+         self.navigationItem.title = @"Repeat";
+         break;
+         
+      case DataOn:
+         self.navigationItem.title = @"DataOn";
+         break;
+         
+      default:
+         break;
+   }
 }
 
 -(void)procedure:(MercuryGetProcedureResponse*)procedure
@@ -35,8 +71,6 @@
    
    [_chart appendNumberOfDataPoints:1 toEndOfSeriesAtIndex:0];
    [_chart redrawChart];
-   
-   self.navigationItem.title = @"<SEGMENT NAME HERE>";
 }
 
 -(void)pointData:(float)data time:(float)time
@@ -56,8 +90,6 @@
 -(SChartSeries *)sChart:(ShinobiChart *)chart seriesAtIndex:(NSInteger)index {
    
    SChartLineSeries *lineSeries = [[SChartLineSeries alloc] init];
-   
-   lineSeries.title = [NSString stringWithFormat:@"<SIGNAL DATA>"];
    
    return lineSeries;
 }
@@ -96,8 +128,9 @@
    
    CGFloat margin = (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) ? 10.0 : 50.0;
    
-   _chart = [[ShinobiChart alloc] initWithFrame:CGRectInset(self.view.bounds, margin, margin + 35)];
-   _chart.title = @"<SAMPLE NAME HERE>";
+   _chart = [[ShinobiChart alloc] initWithFrame:CGRectInset(self.view.bounds, margin, margin + 50)];
+   
+   //_chart.title = @"<SAMPLE NAME HERE>";
    
    _chart.licenseKey = @"rS3mkUUne/mi95GMjAxNDA3MjFzdGVwaGVuLm4uZXNoZWxtYW5Ab2JqZWN0dGhpbmsuY29tdr8nNk8qpbHgex6AE6+LVRAaE9fuGbXpuupSWpWHaqsO6pDxG9OpRdLD7JN7N7pDaWGQOAxg+e2R1NldUy2vIIApMrMR+lyeAnENN8Erk7lKYmd0UmcKDw1nDxZ7AogcifWcwLUyGuik5ffgkV17wFqTsGHo=BQxSUisl3BaWf/7myRmmlIjRnMU2cA7q+/03ZX9wdj30RzapYANf51ee3Pi8m2rVW6aD7t6Hi4Qy5vv9xpaQYXF5T7XzsafhzS3hbBokp36BoJZg8IrceBj742nQajYyV7trx5GIw9jy/V6r0bvctKYwTim7Kzq+YPWGMtqtQoU=PFJTQUtleVZhbHVlPjxNb2R1bHVzPnh6YlRrc2dYWWJvQUh5VGR6dkNzQXUrUVAxQnM5b2VrZUxxZVdacnRFbUx3OHZlWStBK3pteXg4NGpJbFkzT2hGdlNYbHZDSjlKVGZQTTF4S2ZweWZBVXBGeXgxRnVBMThOcDNETUxXR1JJbTJ6WXA3a1YyMEdYZGU3RnJyTHZjdGhIbW1BZ21PTTdwMFBsNWlSKzNVMDg5M1N4b2hCZlJ5RHdEeE9vdDNlMD08L01vZHVsdXM+PEV4cG9uZW50PkFRQUI8L0V4cG9uZW50PjwvUlNBS2V5VmFsdWU+"; // TODO: add your trial licence key here!
    

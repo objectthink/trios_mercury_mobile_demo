@@ -61,7 +61,7 @@
 
 -(void)editItemTapped
 {
-   NSLog(@"selectedIndex:%d", self.selectedIndex);
+   NSLog(@"selectedIndex:%lu", (unsigned long)self.selectedIndex);
    
    _isEditing = !_isEditing;
    

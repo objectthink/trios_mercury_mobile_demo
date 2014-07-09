@@ -92,6 +92,8 @@
    
    _file = nil;
    _reader = nil;
+   
+   [_dataFileVisualizerEx end];
 }
 
 -(void)updated:(id<IMercuryFile>)file
@@ -133,7 +135,10 @@
       
       if ([s isKindOfClass:MercurySgmtRecord.class])
       {
-         //MercurySgmtRecord* gr = (MercurySgmtRecord*)r;
+         MercurySgmtRecord* gr = (MercurySgmtRecord*)r;
+         
+         [_dataFileVisualizerEx procedure:_procedure
+                                  segment:gr];
       }
       
       if([s isKindOfClass:MercuryGetRecord.class])

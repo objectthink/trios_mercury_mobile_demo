@@ -157,7 +157,7 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 
 - (IBAction)addSegmentTapped:(UIButton *)sender
 {
-   int selected =
+   long selected =
    [_segmentChoiceList selectedRowInComponent:0];
    
    MercurySegment* segment =

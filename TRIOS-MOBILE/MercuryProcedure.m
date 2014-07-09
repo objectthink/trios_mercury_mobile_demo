@@ -319,41 +319,65 @@ static int uniqueTagStatic = 0;
    return index;
 }
 
+-(void)initSignalToString
+{
+   _signalToString =
+   @{
+     [NSNumber numberWithInt:IdHeaterADC] : @"IdHeaterADC",
+     [NSNumber numberWithInt:IdHeaterMV] : @"IdHeaterMV",
+     [NSNumber numberWithInt:IdHeaterC] : @"IdHeaterC",
+     [NSNumber numberWithInt:IdFlangeADC] : @"IdFlangeADC",
+     [NSNumber numberWithInt:IdFlangeMV] : @"IdFlangeMV",
+     [NSNumber numberWithInt:IdFlangeC] : @"IdFlangeC",
+     [NSNumber numberWithInt:IdT0UncorrectedADC] : @"IdT0UncorrectedADC",
+     [NSNumber numberWithInt:IdT0UncorrectedMV] : @"IdT0UncorrectedMV",
+     [NSNumber numberWithInt:IdT0C] : @"IdT0C",
+     [NSNumber numberWithInt:IdT0UncorrectedC] : @"IdT0UncorrectedC",
+     [NSNumber numberWithInt:IdRefJunctionADC] : @"IdRefJunctionADC",
+     
+     [NSNumber numberWithInt:IdDeltaT0ADC] : @"IdDeltaT0ADC",
+     [NSNumber numberWithInt:IdDeltaT0MV] : @"IdDeltaT0MV",
+     [NSNumber numberWithInt:IdDeltaT0UVUnc] : @"IdDeltaT0UVUnc",
+     
+     [NSNumber numberWithInt:IdRefJunctionMV] : @"IdRefJunctionMV",
+     [NSNumber numberWithInt:IdRefJunctionC] : @"IdRefJunctionC",
+     [NSNumber numberWithInt:IdDeltaLidADC] : @"IdDeltaLidADC",
+     [NSNumber numberWithInt:IdDeltaLidMV] : @"IdDeltaLidMV",
+     [NSNumber numberWithInt:IdDeltaLidUV] : @"IdDeltaLidUV",
+     [NSNumber numberWithInt:IdDTAmpTempADC] : @"IdDTAmpTempADC",
+     [NSNumber numberWithInt:IdDTAmpTempMV] : @"IdDTAmpTempMV",
+     [NSNumber numberWithInt:IdDTAmpTempC] : @"IdDTAmpTempC",
+     [NSNumber numberWithInt:IdDeltaT0CUnc] : @"IdDeltaT0CUnc",
+     [NSNumber numberWithInt:IdDeltaT0C] : @"IdDeltaT0C",
+     [NSNumber numberWithInt:IdSampleTC] : @"IdSampleTC",
+     
+     [NSNumber numberWithInt:IdCommonTime] : @"IdCommonTime",
+     [NSNumber numberWithInt:IdHeatFlow]:@"IdHeatFlow",
+     
+     [NSNumber numberWithInt:IdHeatFlowT1]:@"IdHeatFlowT1",
+     [NSNumber numberWithInt:IdHeatFlowT1Filt]:@"IdHeatFlowT1Filt",
+     [NSNumber numberWithInt:IdHeatFlowT1Unc]:@"IdHeatFlowT1Unc",
+     [NSNumber numberWithInt:IdHeatFlowT4]:@"IdHeatFlowT4",
+     [NSNumber numberWithInt:IdHeatFlowT4Filt]:@"IdHeatFlowTFilt",
+     [NSNumber numberWithInt:IdHeatFlowT4P]:@"IdHeatFlowT4P",
+     [NSNumber numberWithInt:IdHeatFlowT4PFilt]:@"IdHeatFlowT4pFilt",
+     [NSNumber numberWithInt:IdHeatFlowT4PUnc]:@"IdHeatFlowT4PInc",
+     [NSNumber numberWithInt:IdHeatFlowT4Unc]:@"IdHeatFlowT4Unc",
+     [NSNumber numberWithInt:IdHeatFlowT5]:@"IdHeatFlowT5",
+     [NSNumber numberWithInt:IdHeatFlowT5Filt]:@"IdHeatFlowT5Filt",
+     [NSNumber numberWithInt:IdHeatFlowT5Unc]:@"IdHeatFlowT5Unc",
+     
+     [NSNumber numberWithInt:IdDeltaT0UV]:@"IdDeltaT0UV",
+     [NSNumber numberWithInt:IdDeltaT0UVFilt]:@"IdDeltaT0UVFilt",
+     [NSNumber numberWithInt:IdDeltaT0UVUnc]:@"IdDeltaT0UVUnc"
+     };
+}
+
 -(instancetype)init
 {
    if(self = [super init])
    {
-      _signalToString =
-      @{
-        [NSNumber numberWithInt:IdHeaterADC] : @"IdHeaterADC",
-        [NSNumber numberWithInt:IdHeaterMV] : @"IdHeaterMV",
-        [NSNumber numberWithInt:IdHeaterC] : @"IdHeaterC",
-        [NSNumber numberWithInt:IdFlangeADC] : @"IdFlangeADC",
-        [NSNumber numberWithInt:IdFlangeMV] : @"IdFlangeMV",
-        [NSNumber numberWithInt:IdFlangeC] : @"IdFlangeC",
-        [NSNumber numberWithInt:IdT0UncorrectedADC] : @"IdT0UncorrectedADC",
-        [NSNumber numberWithInt:IdT0UncorrectedMV] : @"IdT0UncorrectedMV",
-        [NSNumber numberWithInt:IdT0C] : @"IdT0C",
-        [NSNumber numberWithInt:IdT0UncorrectedC] : @"IdT0UncorrectedC",
-        [NSNumber numberWithInt:IdRefJunctionADC] : @"IdRefJunctionADC",
-        [NSNumber numberWithInt:IdDeltaT0ADC] : @"IdDeltaT0ADC",
-        [NSNumber numberWithInt:IdDeltaT0MV] : @"IdDeltaT0MV",
-        [NSNumber numberWithInt:IdDeltaT0UVUnc] : @"IdDeltaT0UVUnc",
-        [NSNumber numberWithInt:IdRefJunctionMV] : @"IdRefJunctionMV",
-        [NSNumber numberWithInt:IdRefJunctionC] : @"IdRefJunctionC",
-        [NSNumber numberWithInt:IdDeltaLidADC] : @"IdDeltaLidADC",
-        [NSNumber numberWithInt:IdDeltaLidMV] : @"IdDeltaLidMV",
-        [NSNumber numberWithInt:IdDeltaLidUV] : @"IdDeltaLidUV",
-        [NSNumber numberWithInt:IdDTAmpTempADC] : @"IdDTAmpTempADC",
-        [NSNumber numberWithInt:IdDTAmpTempMV] : @"IdDTAmpTempMV",
-        [NSNumber numberWithInt:IdDTAmpTempC] : @"IdDTAmpTempC",
-        [NSNumber numberWithInt:IdDeltaT0CUnc] : @"IdDeltaT0CUnc",
-        [NSNumber numberWithInt:IdDeltaT0C] : @"IdDeltaT0C",
-        [NSNumber numberWithInt:IdSampleTC] : @"IdSampleTC",
-        
-        [NSNumber numberWithInt:IdCommonTime] : @"IdCommonTime",
-        [NSNumber numberWithInt:IdHeatFlow]:@"IdHeatFlow"
-        };
+      [self initSignalToString];
    }
    return self;
 }
@@ -380,37 +404,8 @@ static int uniqueTagStatic = 0;
             lengthOfSignalSection,
             signal);
       
-      _signalToString =
-      @{
-        [NSNumber numberWithInt:IdHeaterADC] : @"IdHeaterADC",
-        [NSNumber numberWithInt:IdHeaterMV] : @"IdHeaterMV",
-        [NSNumber numberWithInt:IdHeaterC] : @"IdHeaterC",
-        [NSNumber numberWithInt:IdFlangeADC] : @"IdFlangeADC",
-        [NSNumber numberWithInt:IdFlangeMV] : @"IdFlangeMV",
-        [NSNumber numberWithInt:IdFlangeC] : @"IdFlangeC",
-        [NSNumber numberWithInt:IdT0UncorrectedADC] : @"IdT0UncorrectedADC",
-        [NSNumber numberWithInt:IdT0UncorrectedMV] : @"IdT0UncorrectedMV",
-        [NSNumber numberWithInt:IdT0C] : @"IdT0C",
-        [NSNumber numberWithInt:IdT0UncorrectedC] : @"IdT0UncorrectedC",
-        [NSNumber numberWithInt:IdRefJunctionADC] : @"IdRefJunctionADC",
-        [NSNumber numberWithInt:IdDeltaT0ADC] : @"IdDeltaT0ADC",
-        [NSNumber numberWithInt:IdDeltaT0MV] : @"IdDeltaT0MV",
-        [NSNumber numberWithInt:IdDeltaT0UVUnc] : @"IdDeltaT0UVUnc",
-        [NSNumber numberWithInt:IdRefJunctionMV] : @"IdRefJunctionMV",
-        [NSNumber numberWithInt:IdRefJunctionC] : @"IdRefJunctionC",
-        [NSNumber numberWithInt:IdDeltaLidADC] : @"IdDeltaLidADC",
-        [NSNumber numberWithInt:IdDeltaLidMV] : @"IdDeltaLidMV",
-        [NSNumber numberWithInt:IdDeltaLidUV] : @"IdDeltaLidUV",
-        [NSNumber numberWithInt:IdDTAmpTempADC] : @"IdDTAmpTempADC",
-        [NSNumber numberWithInt:IdDTAmpTempMV] : @"IdDTAmpTempMV",
-        [NSNumber numberWithInt:IdDTAmpTempC] : @"IdDTAmpTempC",
-        [NSNumber numberWithInt:IdDeltaT0CUnc] : @"IdDeltaT0CUnc",
-        [NSNumber numberWithInt:IdDeltaT0C] : @"IdDeltaT0C",
-        [NSNumber numberWithInt:IdSampleTC] : @"IdSampleTC",
-        
-        [NSNumber numberWithInt:IdCommonTime] : @"IdCommonTime",
-        [NSNumber numberWithInt:IdHeatFlow]:@"IdHeatFlow"
-        };
+      [self initSignalToString];
+      
    }
    return self;
 }
@@ -465,7 +460,7 @@ static int uniqueTagStatic = 0;
       [self.bytes appendBytes:&zero length:1];
    
    /////////////////signal section
-   uint signalSectionLength = [_signals count] * 4;
+   uint signalSectionLength = (uint)[_signals count] * 4;
    [self.bytes appendBytes:&signalSectionLength length:4];
    
    for (NSNumber* n in _signals)
